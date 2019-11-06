@@ -1,0 +1,19 @@
+.divider{
+    width: 100%;
+    min-height: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    position: relative;
+}
+body{
+    background-color:floralwhite;
+}
+.custom_table{
+    border-collapse: separate;
+    border-spacing: 2px 5px;
+    background-color:beige;
+}
+td{
+    padding: 10px;
+}
