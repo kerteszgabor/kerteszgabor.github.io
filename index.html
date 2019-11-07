@@ -11,11 +11,14 @@
 <link rel="stylesheet" type="text/css" href="sajat.css"/>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base target="_blank">
 </head>
 <body id = "body" class = "light-mode">
    
 <nav class="navbar fixed-top navbar-dark bg-dark">
    <a class="navbar-brand" href="#">Gabi oldala</a>
+   
+        
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,17 +28,18 @@
                 <a class="nav-link" href="index.html">Főoldal<span class="sr-only">Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tinyfilemanager/tinyfilemanager.php">Adatok feltöltése</a>
+                <a class="nav-link" href="">Adatok feltöltése</a>
             </li>
-        
+        <li class="nav-item">
+                <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="padding-left: -10px;">Dark Mode</button>
+            </li>
         </ul>
     </div>
 </nav>
     <div class="divider"></div> 
-    
-<div class="text-left container-fluid" style="margin-top: 50px"> 
-        <button id="btn" type="button" onclick="ToogleDarkMode()" class="btn btn-dark text-center">Dark Mode</button>
-    </div>
+     <div class="divider"></div> 
+     <div class="divider"></div> 
+
     <div class = "container">
         <div class="font-weight-lighter d-flex justify-content-center">
             <h1 class="display-3">Szia!</h1>
@@ -58,7 +62,7 @@
     <div class="container-fluid">
     <div id="content" class="row d-flex justify-content-center">
         <div class="col">
-            <div id="card" class="card card-body ">
+            <div id="card" class="mb-4 card card-body ">
                 <p class="lead" style="font-size: 30">Opre ZH követelmények</p>
                 <ul>
 <li>legyen futtatható a script</li>
@@ -83,13 +87,25 @@
         </div>
         
         <div class="col">
-        <div id ="card" class="card card-body">
-                <p class="lead" style="font-size: 30">Drive linkek</p>
-                <a href="https://drive.google.com/open?id=1VSvdPx3K6qhzqobUzXZRm_Ln6CoFaXVx">GabiDrive</a>
+        <div id ="card" class="card card-body mb-4">
+                <p class="lead card-link" style="font-size: 30">Drive linkek</p>
+                <a class="card-link"  href="https://drive.google.com/open?id=1VSvdPx3K6qhzqobUzXZRm_Ln6CoFaXVx">GabiDrive</a>
+                <a class="card-link"  href="https://www.youtube.com/playlist?list=PLwnmwZydDTcC_e3lXO1js1WPOJsrLGv2w">Rendszerelmélet előadások</a>
+                
+            </div>
+        
+        <div id ="card" class="mb-4 card card-body">
+                <p class="lead card-link" style="font-size: 30">Progos linkek</p>
+                <a class="card-link" href="http://users.nik.uni-obuda.hu/prog3/">Prog 3 website</a>
+                <a class="card-link" href="http://users.nik.uni-obuda.hu/siposm/">Sipos Miki oldala</a>
+                <a class="card-link" href="http://users.nik.uni-obuda.hu/kovacs.andras/portal/">Kovi oldala</a>
+                <a class="card-link" href="http://users.nik.uni-obuda.hu/homonnai/" >Kovi oldala</a>
             </div>
         </div>
+
         </div>
-    </div>
+        </div>
+    
 
     <div class="divider"></div>
     <div class="divider"></div>
@@ -100,10 +116,11 @@
     
  <div style="color:white">
      <nav id="futer" class="navbar  bg-dark">
-         <div class=" navbar-brand footer-copyright text-center px-0 py" style="margin-top: -20px">Kontakt: 
+         <div class=" font-weight-lighter navbar-brand footer-copyright text-center px-0 py " style="margin-top: -25px; font-size: 15px;">Kontakt: 
     <a href="https://www.facebook.com/kerteszgabor.official" class="badge badge-light" >Kertész Gábor</a>
   </div>
-  <p  class="navbar-brand" href="#">2019</p>
+  <p  class="navbar-brand font-weight-lighter" style="margin-top: -10px; font-size: 15" href="#">2019</p>
+             
 </nav>
      <!--
         

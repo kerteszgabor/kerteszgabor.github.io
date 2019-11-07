@@ -9,6 +9,11 @@ div {
     display: block;
 }
 
+.navbar-toggle.navbar-left {
+  float: left;
+  margin-left: 10px;
+}
+
 .divider{
     width: 100%;
     min-height: 1px;
@@ -41,7 +46,10 @@ body.dark-mode {
 #content{
     color: #353942;
     font-weight: lighter;
+    
 }
+
+
 
 hr{ border-top: 1px solid #ccc }
 
@@ -61,8 +69,9 @@ td{
     position: fixed;
     left: 0;
     bottom: 0;
-    height: 50px;
+    height: 30px;
     width: 100%;
     overflow: hidden;
+    font-size: 5;
 }
 
