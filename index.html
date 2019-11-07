@@ -12,7 +12,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body id = "body" class = "light-mode">
    
 <nav class="navbar fixed-top navbar-dark bg-dark">
    <a class="navbar-brand" href="#">Gabi oldala</a>
@@ -25,42 +25,97 @@
                 <a class="nav-link" href="index.html">Főoldal<span class="sr-only">Home</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tinyfilemanager/tinyfilemanager.php">Fájlkezelő</a>
+                <a class="nav-link" href="tinyfilemanager/tinyfilemanager.php">Adatok feltöltése</a>
             </li>
         
         </ul>
     </div>
 </nav>
+    <div class="divider"></div> 
     
-    <div class="row" style="background-color: black">
-        <div class="col font-weight-light" style="color: beige; text-indent:15px; inherit; line-height: 50px;">Weboldal fejléce</div>
+<div class="text-left container-fluid" style="margin-top: 50px"> 
+        <button id="btn" type="button" onclick="ToogleDarkMode()" class="btn btn-dark text-center">Dark Mode</button>
+    </div>
+    <div class = "container">
+        <div class="font-weight-lighter d-flex justify-content-center">
+            <h1 class="display-3">Szia!</h1>
+        </div>
         
-    </div> 
-    
-    <div class="divider"></div>
-    <div class = "container ">
-        <h1 class="display-3  d-flex justify-content-center ">Szia!</h1>
-        <p class="font-weight-lighter  d-flex justify-content-center">A fájlkezelőhöz válaszd a menüt</p>
-    
-    
-    
-    
-    
-
+        <div class="font-weight-lighter d-flex justify-content-center">
+            <p>Kertész Gábor személyes oldala.</p>
+            </div>
+        <div class="font-weight-lighter d-flex justify-content-center">
+            <p>Created with love & passion in 2019.</p>
+            </div>
+        
         <hr>
 
 
+    
+
+    <div class="divider"></div>    
+    </div>
+    <div class="container-fluid">
+    <div id="content" class="row d-flex justify-content-center">
+        <div class="col">
+            <div id="card" class="card card-body ">
+                <p class="lead" style="font-size: 30">Opre ZH követelmények</p>
+                <ul>
+<li>legyen futtatható a script</li>
+<li>menüt kell tudni írni</li>
+<li>date parancs használata</li>
+<li>változók kezelése</li>
+<li>paraméterek elérése</li>
+<li>szöveg bekérése</li>
+<li>különböző idézőjelek használata</li>
+<li>expr parancs matematikai műveletek használata</li>
+<li>elágazások (feltételben pl. létezik-e a fájl)</li>
+<li>ciklusok (kérj be számot, annyiszor fusson le valami)</li>
+<li>esetleg fájl listán kell végigmenni</li>
+<li>while és until ciklus használata (until biztosan lesz)</li>
+<li>reguláris kifejezések, greppellés (egyszerűbbek, pl ezzel kezdődik egy szó: e stb...)</li>
+<li>sed használata: csak a csere verzió</li>
+<li>cut és wc parancsok</li>
+<li>chmod, chown használata</li>
+               
+                </ul> 
+            </div>
+        </div>
         
-      <div class="text-center"> 
-        <button type="button" onclick="ChangeBcolor()" class="btn btn-dark text-center">Teszt Gomb</button>
-          </div> 
-    <hr>
-        
-    <div class="row d-flex justify-content-center">
-        <div class="col-4 card card-body ">Hello</div>
+        <div class="col">
+        <div id ="card" class="card card-body">
+                <p class="lead" style="font-size: 30">Drive linkek</p>
+                <a href="https://drive.google.com/open?id=1VSvdPx3K6qhzqobUzXZRm_Ln6CoFaXVx">GabiDrive</a>
+            </div>
+        </div>
         </div>
     </div>
+
+    <div class="divider"></div>
+    <div class="divider"></div>
+    <div class="divider"></div>
+    <div class="divider"></div>
+    <div class="divider"></div>
+    <div class="divider"></div>
     
-    
+ <div style="color:white">
+     <nav id="futer" class="navbar  bg-dark">
+         <div class=" navbar-brand footer-copyright text-center px-0 py" style="margin-top: -20px">Kontakt: 
+    <a href="https://www.facebook.com/kerteszgabor.official" class="badge badge-light" >Kertész Gábor</a>
+  </div>
+  <p  class="navbar-brand" href="#">2019</p>
+</nav>
+     <!--
+        
+<footer class="page-footer font-small bg-dark">
+
+  <!-- Copyright 
+  <div class="footer-copyright text-center py-3">Kontakt: 
+    <a href="https://www.facebook.com/kerteszgabor.official">Kertész Gábor</a>
+  </div>
+  <!-- Copyright  -->
+
+</footer>
+</div> 
 </body>
 </html>
