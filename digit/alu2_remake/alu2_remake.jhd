@@ -1,0 +1,5 @@
+MODULE alu2_remake
+	SUBMODULE mplx_2_1_4bit
+		INSTANCE XLXI_9
+	SUBMODULE hex_7seg
+		INSTANCE XLXI_10

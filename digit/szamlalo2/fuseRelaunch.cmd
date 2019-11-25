@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/Seres/Desktop/DIGIT/digit_remake/knight_rider_remake/kr_remake_kr_remake_sch_tb_isim_beh.exe" -prj "C:/Users/Seres/Desktop/DIGIT/digit_remake/knight_rider_remake/kr_remake_kr_remake_sch_tb_beh.prj" "work.kr_remake_kr_remake_sch_tb" 

@@ -1,0 +1,2 @@
+vhdl work "alu2_remake.vhf"
+vhdl work "tb.vhd"

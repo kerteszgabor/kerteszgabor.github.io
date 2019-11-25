@@ -1,0 +1,29 @@
+Command line:
+   kr_remake_kr_remake_sch_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  1128
+
+Fri Nov 22 15:11:36 2019
+
+
+ Elaboration Time: 0.0625 sec
+
+ Current Memory Usage: 5160.05 Meg
+
+ Total Signals          : 487
+ Total Nets             : 157
+ Total Signal Drivers   : 114
+ Total Blocks           : 91
+ Total Primitive Blocks : 67
+ Total Processes        : 113
+ Total Traceable Variables  : 53
+ Total Scalar Nets and Variables : 680
+Total Line Count : 177
+
+ Total Simulation Time: 6.4375 sec
+
+ Current Memory Usage: 5160.05 Meg
+
+Fri Nov 22 15:11:55 2019
+

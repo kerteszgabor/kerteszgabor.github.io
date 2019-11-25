@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "D:/Digit szimulaciok/DigitLaborVizsga/szamlalo/szamlalo_szamlalo_sch_tb_isim_beh.exe" -prj "D:/Digit szimulaciok/DigitLaborVizsga/szamlalo/szamlalo_szamlalo_sch_tb_beh.prj" "work.szamlalo_szamlalo_sch_tb" 
