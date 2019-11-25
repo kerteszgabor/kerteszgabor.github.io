@@ -1,3 +1,0 @@
-MODULE szavazo
-	SUBMODULE hex_7seg
-		INSTANCE XLXI_8

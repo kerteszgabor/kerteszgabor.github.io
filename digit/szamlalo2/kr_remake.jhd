@@ -1,3 +1,0 @@
-MODULE kr_remake
-	SUBMODULE hex_7seg
-		INSTANCE XLXI_10

@@ -1,3 +1,0 @@
-MODULE szamlalo3_remake
-	SUBMODULE hex_7seg
-		INSTANCE XLXI_7

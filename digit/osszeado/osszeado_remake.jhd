@@ -1,3 +1,0 @@
-MODULE osszeado_remake
-	SUBMODULE hex_7seg
-		INSTANCE XLXI_2

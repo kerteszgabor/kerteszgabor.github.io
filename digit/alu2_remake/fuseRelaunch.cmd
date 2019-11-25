@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -o "D:/Digit szimulaciok/DigitLaborVizsga/alu2_remake/alu2_remake_alu2_remake_sch_tb_isim_beh.exe" -prj "D:/Digit szimulaciok/DigitLaborVizsga/alu2_remake/alu2_remake_alu2_remake_sch_tb_beh.prj" "work.alu2_remake_alu2_remake_sch_tb" 
