@@ -33,3 +33,33 @@ function ToogleDarkMode()
         }
 }
 
+function RandomcaseConverter()
+{
+    let input = document.getElementById("randomcaseInput").value;
+    let startingDecider = Math.random() * 100;
+    let result = ''
+    if (startingDecider > 50)
+    {
+         result = input[0].toLowerCase();
+    }
+    else
+    {
+         result = input[0].toUpperCase();
+    }
+
+    
+    for (var i = 1; i < input.length; i++)
+    {
+        if (result[i-1] == result[i-1].toLowerCase())
+        {
+            result += input[i].toUpperCase();
+        }
+        else
+        {
+            result += input[i].toLowerCase();
+        }
+    }
+    document.getElementById("randomcaseResult").value = result;
+}
+
+
