@@ -145,18 +145,25 @@
                     <div id ="card" class="mb-4 card card-body">
                      <form>   
                         <div class="form-group">
-                                <div class="row align-items-center">
+                                <div class="row">
+                                        <div class="col">
+                                            <label for="randomcaseInput">Írd be a Spongya-szöveget:</label>
+                                        </div>
+                                        <div class="col">
+                                                <label for="randomcaseResult">Eredmény:</label>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                    
                                     <div class="col">
-                                        <label for="randomcaseInput">Írd be a Spongya-szöveget:</label>
-                                        <textarea class="form-control" id="randomcaseInput" rows="3">esküszöm, én nem olyan lány vagyok</textarea>
+                                        <textarea class="form-control mt-3 " id="randomcaseInput" rows="3">esküszöm, én nem olyan lány vagyok</textarea>
                                     </div>
                                     <div class="col">
-                                        <label for="randomcaseResult">Eredmény:</label>
-                                        <textarea class="form-control" id="randomcaseResult" rows="3"></textarea>
+                                        <textarea class="form-control mt-3 " id="randomcaseResult" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-center align-items-center">
-                                    <div class="col d-flex justify-content-center"><button type="button" class="btn btn-primary mt-3" onclick="RandomcaseConverter()">Generál</button> </div>
+                                    <div class="col d-flex justify-content-center"><button type="button" class="btn btn-primary mt-4" onclick="RandomcaseConverter()">Generál</button> </div>
                                 </div>
                             </div>
                      </form>
