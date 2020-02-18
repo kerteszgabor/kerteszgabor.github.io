@@ -15,7 +15,13 @@
 <nav class="navbar fixed-top navbar-dark bg-dark">
    <a class="navbar-brand" href="#">Főoldal</a>
    
-        
+    <div class="custom-control custom-switch d-flex justify-content-start px-5 mr-5">
+      <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+      <label class="custom-control-label headerText" for="customSwitches">Dark Mode</label>
+    </div>     
+
+    
+    
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
