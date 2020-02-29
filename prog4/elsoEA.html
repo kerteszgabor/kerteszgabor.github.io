@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/github-markdown.css">
+    <style>
+            .markdown-body {
+                box-sizing: border-box;
+                min-width: 200px;
+                max-width: 980px;
+                margin: 0 auto;
+                padding: 45px;
+            }
+        
+            @media (max-width: 767px) {
+                .markdown-body {
+                    padding: 15px;
+                }
+            }
+        </style>
+    <title>Első prog4 előadás</title>
+</head>
+<body>
+    <article class="markdown-body">
+            <h1>Prog4 előadások</h1>
+            <blockquote>
+            <p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
+            </blockquote>
+            <h2>1. előadás</h2>
+            <h3>Grafikus felület API-k és jellemzőik</h3>
+            <ul>
+            <li>Overhead nem lényeges</li>
+            <li>Alacsony szinten (pl.: winapi) nem érdemese foglalkozni vele, nem OOP, hülye paraméterezés…</li>
+            <li>Erre ráépül egy magasabb szintű layer, a probléma, hogy a frameworkök folyamatosan változnak</li>
+            <li>A Windows Forms atomstabil, kiforrott, kényelmes, de alap dolgokat tud, főleg megjelenítésre fókuszál. Nem támogat tervezési patterneket, valamint a megjelenítés és a vezérlés szétválasztása problémás</li>
+            <li>WPF-re átállás problémás volt a sok windows forms legacy kód, ráadásul sok IDE crash miatt is az elején</li>
+            <li>UWP maga halott, de a core még létező dolog, WinUI néven próbálják integrálgatni a WPF-be</li>
+            <li>Cross-platform mobil megoldások (XAML)</li>
+            <li>.Net Core fölé lehetett volna egy platformfüggetlen WPF ui-t rakni, de nem ez történt, maradt a csak Windowsos környezet</li>
+            <li>MS szerint a megoldás: Web Razor + Native  = Blazor, az új platformfüggetlen UI solution</li>
+            <li>WPF-el az MVVM pattern jól látható</li>
+            </ul>
+            <h3>Design Patterns, MV* layering, MVVM vs MVC</h3>
+            <ul>
+            <li>
+            <p>Architekturális tervezési minták (egy doboz nem egy classt reprezentál, hanem classok gyűjteményét)</p>
+            <h4>MVVM</h4>
+            <ul>
+            <li>Model = üzleti logika</li>
+            <li>Főleg GUI-kra jellemző</li>
+            <li>Viewból üzleti metódust úgy hívok meg, hogy a View Modelt berakom közéjük: absztrakció, tehát nem függnek egymástól</li>
+            <li>Dependency-k csökkentése, egyirányúak legyenenek (view model eseményvezérelt, tehát úgy szól a viewnak, hogy egyirányú kommunikáció)</li>
+            <li>Kétirányú függés: rossz, mert nem tudjuk szétbontani a komponenseket (pl átmozgatás másik appba nem lehetséges, csak együtt)</li>
+            </ul>
+            <h4>MVC</h4>
+            <ul>
+            <li>Itt a model egy egyszerű adathalmaz (tehát kb az MVVM-m view modelje, de az eseményvezérelt, itt viszont validációk vannak; illetve tulajdonságok mind a kettőben)</li>
+            <li>Főleg webes keretrendszerek</li>
+            <li>Itt az interakció, input egyből a kontrollerhez jut el</li>
+            <li>Request alapján a controller hozza létre view-t a model alapján</li>
+            <li>API hívás esetén (pl REST) nem HTML-t, viewt ad vissza, hanem egy JSON-t → MVVMC v1</li>
+            </ul>
+            <h4>MVVM filozófia:</h4>
+            <ul>
+            <li>Tulajdonságok halmaza</li>
+            <li>Automatizáció: adatkötéssel történik</li>
+            <li>Adatkötés négy dologból áll:
+            <ul>
+            <li>Forrásobjektum: datakontext megadása → source Prop.: mindig public tulajdonság</li>
+            <li>Cél vezérlő: dependency object kell legyen mindig → dest. Prop</li>
+            <li>Jelszóhoz nem tudunk kötni, mert nem lehet destination prop. → biztonság</li>
+            <li>Tulajdonság módosítása: automatát szeretnék jellemzően, tehát Two-way binding</li>
+            <li>Frissítési metodika:
+            <ul>
+            <li>Property Changed: gyakori, egyből amikor változás van, frissítünk</li>
+            <li>Explicit: ritka, csak amikor én kérem</li>
+            <li>LostFocus: jellemzően textboxoknál használjuk</li>
+            <li>Konverter is van, ha útközben esetleg adatot kéne konvertálni</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            <li>Automata szinkronizáció:
+            <ul>
+            <li>UI frissítése nagyon lassú, körülményes feladat</li>
+            <li>Ezért nem folyamatosan frissítgetünk, hanem eventen keresztül értesítjük a view-t (absztrakcióval történik, minden view model implementálja a INotifyPropertyChanged interfészt)</li>
+            <li>A feliratkozás magától történik, az ablak által, PropertyChanged hatására frissít</li>
+            <li>A view model dob egy eseményt, nem tud a view-ról → nincs függés, csak egy irányba!</li>
+            </ul>
+            </li>
+            <li>Főleg XAML segítségével érdemes a view modelt létrehozni, de máshogy is lehet</li>
+            <li>UI eventek: kényelmes, de rossz működés… a view küld eseményt a XAML.cs-nek közvetlen, túl sok függés, circle dependency</li>
+            <li>Mi lenne akkor a szép megoldás? Ki kell bővíteni a view model-t</li>
+            <li>Command design pattern:
+            <ul>
+            <li>VM megkapja az interakciót a viewtól, továbbküldi a BL-nak</li>
+            <li>Itt is egyirányú a függés</li>
+            <li>Így alakul ki a teljes MVVM</li>
+            <li>Logika <strong>semmiképpen sem</strong> függ az VM-től, tehát decoupled komponensek → csak egyirányú függés alakul ki</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            
+    </article>
+</body>
+</html>
+
