@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/github-markdown.css">
+    <link rel="stylesheet" href="css/sajat.css">
     <style>
             .markdown-body {
                 box-sizing: border-box;
@@ -22,8 +24,33 @@
         </style>
     <title>Első prog4 előadás</title>
 </head>
-<body>
-    <article class="markdown-body">
+<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Prog 4 - Első előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">Dark Mode</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5">
             <h1>Prog4 előadások</h1>
             <blockquote>
             <p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
@@ -104,8 +131,11 @@
             </ul>
             </li>
             </ul>
-            
     </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
 

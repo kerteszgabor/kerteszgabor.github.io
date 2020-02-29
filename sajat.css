@@ -36,12 +36,15 @@ div {
     @extend justify-content-center;
 }
 
+#darkmodeSwitcher{
+    color: #eee;
+    margin: 0 auto;
+}
+
 
 body.dark-mode {
     background-color:#111;
-    color:#eee;
-    
-     
+    color:#eee; 
 }
 #content{
     color: #353942;

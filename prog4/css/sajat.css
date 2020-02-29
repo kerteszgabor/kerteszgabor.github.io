@@ -1,0 +1,15 @@
+body.dark-mode {
+    background-color:#111;
+    color:rgb(255, 255, 255); 
+}
+
+
+body.light-mode {
+    background-color:rgb(255, 255, 255);
+    color:#111;
+}
+
+#darkmodeSwitcher{
+    color: #eee;
+    margin: 0 auto;
+}
