@@ -2,7 +2,7 @@
 
 > Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.
 
-## UML 
+## UML
 
 ### Mi az az UML?
 
@@ -27,7 +27,7 @@
 - jellemzően leírható lenne egy egyszerűbb táblázatos formában
 - nagyon bonyolult rendszerek esetén van értelme igazán
 
-#### Activity diagram 
+#### Activity diagram
 
 - nem a háttérben futó működés a fontos, hanem a felhasználó szempontjából a rendszeren átfutó változások
 - több use case leírása is lehetséges egy activityn belül 
@@ -50,8 +50,8 @@
     ##### Timing diagram
     - nagyon kis neat, de ha megnő, akkor átláthatatlan lesz
     ##### Sequence diagram
-    - csak vízszintes vonalak! 
-    - a *nyílhegy formájú* diagram általában jó 
+    - csak vízszintes vonalak!
+    - a *nyílhegy formájú* diagram általában jó
     - bal felső sarokból indulva a nyilakat követve simán kiolvasható az egész algoritmus
 
 ### Wireframe
@@ -60,5 +60,5 @@
 - "látványterv"
 - gyors feedback, ez segítheti a tervezést már a korai fázisban
 - nem a konkrét megjelenítés a lényeg, hanem az **elrendezés**
-- nem érdemes elszállni a dizájnnal, ha a megvalósítás utána problémás 
+- nem érdemes elszállni a dizájnnal, ha a megvalósítás utána problémás
 - folyamatok végigjátszhatóak legyenek: egymásutániságot jelezni kell (nyilak, megjegyzések)

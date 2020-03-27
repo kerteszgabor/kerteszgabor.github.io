@@ -6,7 +6,7 @@
         {
             "label": "Compile Markdown",
             "type": "shell",
-            "command": "markdown-it ./md/harmadikEA.md -o harmadikEA.html",
+            "command": "markdown-it ./md/otodikEA.md -o otodikEA.html",
             "group": "build",
             "problemMatcher": []
         }
