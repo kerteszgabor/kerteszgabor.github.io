@@ -1,49 +1,94 @@
-<h1>Prog harmadik előadás</h1>
-<h2>Eddigi git ismeretek</h2>
-<ul>
-<li>decentralizált verziókövető-rendszer</li>
-<li>nem klónozás az elv</li>
-<li>nem csak master branchet használunk: ténylegesen többfelhasználós, eloszott fejlesztést szeretnénk támogatni</li>
-</ul>
-<h2>Git általában</h2>
-<ul>
-<li>a UI-ok jól néznek ki, de nem tudják a funkciók 100%-át
-<ul>
-<li>főleg bonyolultabb műveleteket <strong>csak CLI-ből</strong> érünk el</li>
-<li>ráadásul előfordulnak bugok</li>
-<li>IDE-k, GUI git kliensek is rendelkeznek CLI-vel</li>
-</ul>
-</li>
-</ul>
-<h3>Konfliktuskezelés</h3>
-<ul>
-<li>egy file-on belüli két módosítás <strong>mindig</strong> conflict, akkor is, ha valójában a fájlon belül különböző helyre írnak</li>
-<li>konfliktfeloldás: helyileg történjen (local) → gyakorlatilag egy új commit keletkezik</li>
-<li>local branch és remote branch viszonya: vagy <em>behind</em> vagy <em>ahead</em></li>
-<li>mindig <strong>no-fast-forward</strong> merge-t használjunk</li>
-<li>kdiff3 viszonylag jó merge-tool</li>
-</ul>
-<h3>Branching</h3>
-<ul>
-<li>stabilitást jelezni, funkciókat szeparálni is kiváló</li>
-<li>forke - merge</li>
-<li>merging:
-<ul>
-<li>több ág egyesítése</li>
-<li>plain merge: headet áthelyezzük az új kódrészlet végére → &quot;összeláncoljuk&quot;</li>
-<li>plain merge esetén forke-history elveszik</li>
-<li>no-fast-forwardot használjunk → ekkor a merge <strong>mindig egy új commit</strong></li>
-<li>van lehetőség remote mergelni is</li>
-<li>elvárás: master/develop felosztás, masterre <strong>soha</strong> nem megy feature-commit, csak merge-commit</li>
-<li>túl sok commit <strong>nincs</strong></li>
-</ul>
-</li>
-<li>GitFlow modell
-<ul>
-<li>feature, hotfix branchek: ezek nem személy- és modul-specifikusak</li>
-<li>release-branch-be új feature <strong>soha</strong> nem kerül bele, csak hibajavítás → viszont ezeket a developba is be kell commitolni, hogy a hiba ne jöjjön elő még egyszer</li>
-<li>github branching model esetén a remote merging komoly szerepet játszik, hiszen sikeres pull request után ez történik</li>
-<li>automatizmusok (pl.: tesztelés, esetleg deployment is)</li>
-</ul>
-</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/github-markdown.css">
+    <link rel="stylesheet" href="css/sajat.css">
+    <title>Harmadik prog4 előadás</title>
+</head>
+<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Harmadik előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">DM</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5">
+            <h1>Prog harmadik előadás</h1>
+            <h2>Eddigi git ismeretek</h2>
+            <ul>
+            <li>decentralizált verziókövető-rendszer</li>
+            <li>nem klónozás az elv</li>
+            <li>nem csak master branchet használunk: ténylegesen többfelhasználós, eloszott fejlesztést szeretnénk támogatni</li>
+            </ul>
+            <h2>Git általában</h2>
+            <ul>
+            <li>a UI-ok jól néznek ki, de nem tudják a funkciók 100%-át
+            <ul>
+            <li>főleg bonyolultabb műveleteket <strong>csak CLI-ből</strong> érünk el</li>
+            <li>ráadásul előfordulnak bugok</li>
+            <li>IDE-k, GUI git kliensek is rendelkeznek CLI-vel</li>
+            </ul>
+            </li>
+            </ul>
+            <h3>Konfliktuskezelés</h3>
+            <ul>
+            <li>egy file-on belüli két módosítás <strong>mindig</strong> conflict, akkor is, ha valójában a fájlon belül különböző helyre írnak</li>
+            <li>konfliktfeloldás: helyileg történjen (local) → gyakorlatilag egy új commit keletkezik</li>
+            <li>local branch és remote branch viszonya: vagy <em>behind</em> vagy <em>ahead</em></li>
+            <li>mindig <strong>no-fast-forward</strong> merge-t használjunk</li>
+            <li>kdiff3 viszonylag jó merge-tool</li>
+            </ul>
+            <h3>Branching</h3>
+            <ul>
+            <li>stabilitást jelezni, funkciókat szeparálni is kiváló</li>
+            <li>forke - merge</li>
+            <li>merging:
+            <ul>
+            <li>több ág egyesítése</li>
+            <li>plain merge: headet áthelyezzük az új kódrészlet végére → &quot;összeláncoljuk&quot;</li>
+            <li>plain merge esetén forke-history elveszik</li>
+            <li>no-fast-forwardot használjunk → ekkor a merge <strong>mindig egy új commit</strong></li>
+            <li>van lehetőség remote mergelni is</li>
+            <li>elvárás: master/develop felosztás, masterre <strong>soha</strong> nem megy feature-commit, csak merge-commit</li>
+            <li>túl sok commit <strong>nincs</strong></li>
+            </ul>
+            </li>
+            <li>GitFlow modell
+            <ul>
+            <li>feature, hotfix branchek: ezek nem személy- és modul-specifikusak</li>
+            <li>release-branch-be új feature <strong>soha</strong> nem kerül bele, csak hibajavítás → viszont ezeket a developba is be kell commitolni, hogy a hiba ne jöjjön elő még egyszer</li>
+            <li>github branching model esetén a remote merging komoly szerepet játszik, hiszen sikeres pull request után ez történik</li>
+            <li>automatizmusok (pl.: tesztelés, esetleg deployment is)</li>
+            </ul>
+            </li>
+            </ul>
+    </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
