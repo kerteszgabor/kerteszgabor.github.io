@@ -10,11 +10,11 @@ function ToogleDarkMode()
             getContents.style.color= '#d8dbe3';
             buttonvar.innerHTML = "Light Mode";
             buttonvar.className = "btn text-center btn-light";
-            getContents.classList += "dark-mode mt-5";
+            getContents.classList += " dark-mode";
         }
     else
         {
-            getContents.classList += "light-mode mt-5";
+            getContents.classList += " light-mode";
             getContents.style.color = '#111';
             docBody.className = "light-mode";
             buttonvar.innerHTML = "Dark Mode";

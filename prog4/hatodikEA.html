@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Prog4 6. előadás</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/sajat.css"/>
+  </head>
+	<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Első előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">DM</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5"><h1 id="prog4-6.-előadás">Prog4 6. előadás</h1>
+<blockquote>
+<p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
+</blockquote>
+<h2 id="tervezési-mintákról-általában">Tervezési mintákról általában</h2>
+<h3 id="bevezetés">Bevezetés</h3>
+<p>maintainability, reusability &gt; runtime</p>
+<h3 id="solid-elvek">SOLID elvek</h3>
+<h4 id="s-=-single-responsibility">S = Single Responsibility</h4>
+<ul class="list">
+<li>minden osztály egy dologért felelős, de azt jól csinálja</li>
+<li>szolgáltatásoknál sokan betartják, de nagy rendszerek esetén nem</li>
+<li>&quot;godlike&quot; appok --&gt; <strong>mindenért IS</strong> felelősek</li>
+</ul>
+<h4 id="c-=-open-/-closed">C = Open / Closed</h4>
+<ul class="list">
+<li>tipikus codesmell, amikor módosítani kell az őst a leszármazott miatt</li>
+<li>egy funkció hozzáadása csak 1 leszármazott módosítását von</li>
+</ul>
+<h4 id="l-=-liskov-helyettesíthetőség">L = Liskov helyettesíthetőség</h4>
+<ul class="list">
+<li>a fordító csak szintaktikát figyeli a polimorfizmusnál, a szemantikát nem</li>
+<li>tehát runtime errort sem szabad kapnunk, nem elég, hogy fordul a kód</li>
+</ul>
+<h4 id="i-=-interface-segregation">I = Interface segregation</h4>
+<ul class="list">
+<li>&quot;god interface&quot; alakul ki</li>
+<li>tünet: implementálásnál sok üres metódus marad</li>
+<li>jellemzően ha kódban össze-vissza implementálgatjuk az interfészt az is smelly</li>
+</ul>
+<h4 id="d-=-dependency-inversion">D = Dependency Inversion</h4>
+<ul class="list">
+<li>lehet példányosítani dolgokat, de a konkrét függőségek kívülről érkezzenek</li>
+<li>jellemzően interfészen vagy absztrakt osztályon függünk,</li>
+<li>majd dependency injection vagy más módszer a konstruktorban állítja a konkrét implementációt</li>
+<li>betartása segíti, hogy loosely <strong>coupled komponenseink</strong> legyenek</li>
+</ul>
+<h3 id="példa-egy-egyszerű-solid-megvalósításra">Példa egy egyszerű SOLID megvalósításra</h3>
+<p>Egy csillagot akarunk mozgatni a konzolon</p>
+<pre class="hljs"><code><span class="hljs-keyword">interface</span> <span class="hljs-title">IComplex</span> : <span class="hljs-title">IDisplayable</span>, <span class="hljs-title">IMoveable</span> {}
+<span class="hljs-keyword">class</span> <span class="hljs-title">Star</span> : <span class="hljs-title">IComplex</span> {}
+<span class="hljs-keyword">class</span> <span class="hljs-title">Mover</span> { <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Mover</span>(<span class="hljs-params">IComplex subject</span>) }</span>;
+<span class="hljs-keyword">class</span> <span class="hljs-title">ConsoleMover</span> : <span class="hljs-title">Mover</span> {}</code></pre><h3 id="öröklés-és-kompozíció">Öröklés és kompozíció</h3>
+<blockquote>
+<p>&quot;Favor object composition over class inheritance&quot;  </p>
+</blockquote>
+<p>Ez nem azt jelenti, hogy nincs öröklés, hanem, hogy törekedni kell arra, hogy inkább osztályok egymásba ágyazásával oldjuk meg a problémát. Bár így kicsit nehezebben érthető a kód, de futásidőben át lehet átstruktúrálni azt.</p>
+<h4 id="alapelvek">Alapelvek</h4>
+<ul class="list">
+<li>újrahasznosíthatóság nem merül ki abban, hogy a class-t létrehozom, hiszen ha függőségeket helyezek el benne, akkor olyan, mintha nem is lenne különszervezve a többi komponenstől</li>
+<li>mivel nem lehet tudni előre (akár évekre), hogy milyen igények merülnek majd fel, ezért számítani kell rá, hogy <strong>minden megváltozik</strong></li>
+<li>szakmai nyelvezet használata jócskán lerövidíti a megbeszéléseket a szakemberek (pl SCRUM-standup esetén)</li>
+</ul>
+<p>Egyes alapelvek <strong>elavultak</strong> lehetnek: például az <em>iterátor pattern</em> szinte minden modern nyelvbe bekerült már, jellemzően mint <code>foreach</code> ciklus.</p>
+<h3 id="miből-áll-egy-tervezési-minta?">Miből áll egy tervezési minta?</h3>
+<ol class="list">
+<li>Pattern neve</li>
+<li>Körülmény, ahol használható</li>
+<li>Megoldás, működés leírása (jellemzően <strong>UML class diagram</strong>)</li>
+<li>Hozományok (pozitív és negatív)</li>
+<li>Implementáció (jellemzően programkód)</li>
+</ol>
+<p>A vizsgán elérhető lesz mind a class diagram, mind a C# kód a tervezési minták mellé, de el kell tudni magyarázni ezeket.</p>
+<h2 id="tervezési-minták-alkalmazása">Tervezési minták alkalmazása</h2>
+<p>Junior fejlesztőként nem jellemző, hogy egyből tervezési mintákat implementálunk, inkább <strong>legacy kóddal</strong> foglalkozunk, minden egyes módosítás ijesztő lehet, de lehet, hogy sikerül rájönni, hogy az egyes legacy implementációk helyett milyen tervezési minta lenne használható. Ekkor értékelődnek fel az alábbi tervezési minták.</p>
+<h3 id="kiegészítés,-a-színek-a-prezentációban">Kiegészítés, a színek a prezentációban</h3>
+<h4 id="creational-patterns">Creational patterns</h4>
+<ul class="list">
+<li>Zöld - factory patternek</li>
+</ul>
+<h4 id="behavioral-patterns">Behavioral patterns</h4>
+<ul class="list">
+<li>Zöld - hívó és hívott szétválasztása</li>
+<li>Piros - gyűjteményekkel dolgozó patternek</li>
+<li>Kék - a virtuális metódusok értelmes használata</li>
+<li>Nincs szín - nem kategorizálható</li>
+</ul>
+<h4 id="structural-patterns">Structural patterns</h4>
+<ul class="list">
+<li>Zöld - funkció bővítésére használadnó minták (fontosak)</li>
+<li>Kék - a dependency injection használata (a könyvben nem szerepel, mert nem létezett a szó)</li>
+<li>Nincs szín - nem kategorizálható</li>
+</ul>
+<blockquote>
+<p>Ezeken kívül szerepelnek a kódokban <code>Console.WriteLine()</code> metódusok. Ezek feladata valamilyen logic műveletet reprezentálni.</p>
+</blockquote>
+<h3 id="creational-design-patterns">Creational design patterns</h3>
+<h4 id="factory-method">Factory method</h4>
+<ul class="list">
+<li>a funkcionalitáshoz szükséges példány előállítása a hívás helyén határozódik meg</li>
+<li>pl a validáció esetén a <code>[Validate]</code> attribútummal megjelölt tulajdonságok validációs metodikája merőben eltérő lehet, ezért a konkrét implementáció kiszervezésre kerül egy másik osztályba, és ez felelős a validáció létrehozásáért</li>
+<li>így elértük azt, hogy a <code>public bool Validate(object instance)</code> metódus csak validáljon, de <strong>ne tudjon róla, hogy hogyan történik az ellenőrzés</strong></li>
+<li>absztraktabban: a BL nem kell, hogy tudjon a függőségekről</li>
+<li>tehát nem tudja, hogy ki(milyen factory), mit, és hogyan hoz létre, de tud dolgozni a létrehozott elemekkel</li>
+<li>factory esetén öröklési lánc kell (egy fajta factory --&gt; ebből hiearhcia)</li>
+<li>eredetileg csak az öröklés határozhatja meg, hogy milyen példány jön létre a factory által, de manapság népszerű az a megközelítés, hogy a factory-n belüli <code>public T CreateSomeT(object param)</code> metódus valójában a <code>param</code> függvényében határozza meg, hogy milyen <code>T</code> jöjjön létre</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">public</span> Image <span class="hljs-title">CreateImage</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> typeOfImage</span>)
+</span>{
+    <span class="hljs-keyword">switch</span> (typeOfImage)
+    {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"PNG"</span>: <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PngImage(); <span class="hljs-comment">// természetesen PngImage : Image</span>
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"JPG"</span>: <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> JpgImage(); <span class="hljs-comment">// természetesen JpgImage : Image</span>
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+}</code></pre><ul class="list">
+<li>ennek előnye, hogy kevesebb osztály kell, de nincs fordítási támogatás, tehát ha olyan osztályt kérünk, mely nem létezik akkor arról nincs visszajelzés</li>
+<li>ebben pl. egy IDE autocomplete segíthet</li>
+<li>50 darab <code>case</code>-t írni, majd ezekben  megkeresni az elrejtett típust bonyolult lehet</li>
+<li>reflexió segítségével sokkal flexibilisebbé tehető ez, viszont lassulást eredményezhet</li>
+<li>ha mindenképpen szükségünk van arra, hogy legyen compiler support itt, akkor<ul class="list">
+<li>generikus metódus lehet megoldás, pl. <code>CreateImage&lt;ImgType&gt;</code></li>
+<li>típusparaméter, pl. <code>CreateImage(Type imgType)</code></li>
+<li>ezeknél sajnos pontosan tudnom kell hol vannak az osztályok, összes DLL referenciának meg kell lenni, stb</li>
+</ul>
+</li>
+<li>statikus factoryk használata egyre kevésbé elterjedt</li>
+<li>a kettő kombinálása <code>enum</code> segítségével lehetséges lenne, de nagyon rossz megközelítés, hiszen Open/Closed violation, mert az enumot bővíteni kell új típus esetén</li>
+</ul>
+<h4 id="abstract-factory">Abstract factory</h4>
+<ul class="list">
+<li>Több factorynk van, és ezeket szeretnénk együtt kezelni</li>
+<li>Valós felhasználásnál nagyon gyakori</li>
+<li>Gyakori hiba, hogy nem csak service függőség létrehozására használunk factory-t, hanem bekerülünk egy <em>factoryceptionbe</em>, és a factoryk egymást hozzák létre szépen sorban</li>
+<li>Chain of responsibility ide kapcsolódik, lsd: 7. előadás</li>
+</ul>
+<p>Dependency inversion megvalósítható vele, de a factory limitációja, hogy előre be lett programozva, hogy miket és hogyan tud létrehozni, és  ha automatizálni szeretnénk, akkor <strong>IoC containereket</strong> érdemes használnunk</p>
+<h4 id="ioc-container">IoC container</h4>
+<p>Életciklusuk két részre bontható:</p>
+<h5 id="konfigurációs-fázis">Konfigurációs fázis</h5>
+<ul class="list">
+<li><code>Service locator</code>-nek beállítom, a saját IoC-met</li>
+<li><code>Register</code> metódussal beállítom, hogy milyen <strong>interfész</strong> és <strong>osztály</strong> párokkal kell dolgozni</li>
+<li>automata felderítés is működik sok esetben, illetve fejlettebb konténereket lehet config fájlból is konfigolni</li>
+</ul>
+<h5 id="felhasználási-fázis">Felhasználási fázis</h5>
+<blockquote>
+<p>Szintaktikát nem kell ismerni  </p>
+</blockquote>
+<ul class="list">
+<li>különböző containerek más-más szintaktikával, de nagyon hasonlóan működnek</li>
+<li>a működés basically: &quot;ha valaki kéri <code>IExample</code> interfészt, akkor a szabálynak megfelelően hozzárendelt <strong>assembler</strong> segítségével kapja meg&quot;</li>
+</ul>
+<h4 id="hidden-ioc">Hidden IoC</h4>
+<p>A függőségek kezelése az osztályon belül történik, nem pedig a konstruktorban, paraméterként --&gt; elrejtődnek a függőségek, és újrahasználhatatlan lesz a kód. A metódusokat <strong>nem</strong> nézzük át átmozgatásnál, hogy milyen függéseik vannak, hiszen elvárjuk, hogy ne legyenek a kódban elrejtve ezek. Ha a metódus, vagy a konstruktor paraméterei között szerepel egy interfész, akkor tudjuk, hogy erre szükség lesz az átmozgatás után is.<br>Néhány fontosabb elv:</p>
+<ul class="list">
+<li>Ügyeljünk rá, hogy ne csak néhány függőség jelenjen meg a paraméterek között, hanem <strong>szigorúan az összes!</strong></li>
+<li>Ha azt érezzük, hogy túl sok dependency-t kéne felsorolnunk, az egy code smell lehet, hiszen ha betartod a <em>single responsibility</em> elvet, akkor miért lenne szükséged 92 szolgáltatásra a metódusodban?</li>
+</ul>
+    </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
