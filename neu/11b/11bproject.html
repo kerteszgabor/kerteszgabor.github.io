@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Projektmunka visszajelzés 11b</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+body{
+  margin: 0 auto;
+}
+</style>
+
+  </head>
+  <body>
+<div class="container-fluid d-flex justify-content-center">
+    <article class="markdown-body"><h1 id="projektmunka-visszajelzés-11b">Projektmunka visszajelzés 11b</h1>
+<blockquote>
+<p>Ha kérdés van, keressetek Discordon vagy <a href="https://www.messenger.com/t/kerteszgabor.official">messengeren</a>!<br>Az elfogadva akkor kerül be, ha teljesen green-light a projekt, és nincs mit rajta módosítani azon kívül, amit írtam esetleg!</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Név</th>
+<th>Visszajelzés</th>
+<th>Elfogadva</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Egbomon Michael</td>
+<td>Jó az alapötlet nagyon, de a leszármaztatást nem biztos hogy jól gondoltad ki. A szálloda legyen egy összefogó típus, és abban legyenek benne esetleg egy <code>List&lt;Vendeg&gt; vendegek</code> kollekció, meg egy <code>List&lt;Szoba&gt; szobak</code>. Ezt hívjuk osztályok kompozíciójának, mert <em>egybeépíted</em> az osztályaidat gyakorlatilag. Az öröklődést inkább úgy oldanám meg, hogy <code>Szoba</code> ősosztály, és vannak különleges szobák, amik ebből származnak le. Majd még Discordon beszéljünk egyszer róla pls!</td>
+<td>Maybe</td>
+</tr>
+<tr>
+<td>Schvorczi Gergő</td>
+<td>Jó az alapötlet, de bővítsük még ki egy kicsit, mert elég kevés a funkcionalitás. Pl. megjelenítés azért a labeleken kicsit túlmutathat, vagy valami. De a logikát is meg kéne egy kicsit komplikálni. Majd Discordon beszéljünk róla valamikor, kérlek!</td>
+<td>Maybe</td>
+</tr>
+<tr>
+<td>Turza Máté</td>
+<td>Ez teljesen jó, elég bonyolult a szűrések miatt. Ha gondolod, esetleg a kocsikhoz képet is lehet majd rakni, ehhez rakok lejjebb neked egy kis kódot, hogy lásd nem olyan bonyolult, de sokkal jobban fog kinézni a program, ha tetszik az ötlet, majd beszéljünk róla.</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Várhegyi Roland</td>
+<td>Egész jó, tudjunk összehasonlítani objektumokat minden szempont alapján, amiket írtál. Még agyalj valami plusz funkción esetleg, mert egy kicsit vérszegény az a része</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<h2 id="egyéni-kód-segítségek">Egyéni kód segítségek</h2>
+<h3 id="turza-máté">Turza Máté</h3>
+<p>Ilyesmire gondoltam:</p>
+<pre class="hljs"><code>    <span class="hljs-keyword">class</span> <span class="hljs-title">Ferrari</span> : <span class="hljs-title">Supercar</span> 
+    {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> Modell {<span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;}
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> Hengerurtartalom {<span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;}
+
+        <span class="hljs-comment">// stb... egyéb adatok, ezt te tudod</span>
+
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> KepPath{ <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;} = <span class="hljs-string">"ferrariKep.jpg"</span> <span class="hljs-comment">// ferrariKep.jpg meg benne van a debugban</span>
+    }</code></pre><p>És majd a formon lesz egy <code>PictureBox</code>, aminek a src-jét fogjuk cserélgetni, ezt majd még megbeszéljük, hogy kéne</p>
+    </article>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

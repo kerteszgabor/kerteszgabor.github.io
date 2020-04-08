@@ -1,0 +1,14 @@
+Projekt feladat téma: Várhegyi Roland
+
+	Én a kétkerékûekhez hasonlót tudtam csak elképzelni mégpedig négykerékûekkel mert ez áll közel hozzám
+		pl.:Lennének -autók
+			     -teherautók
+			     -kis hobby célú jármûvek (quad, side by side-ok, stb)
+		pl.:lenne -méretük
+			 -súlyuk
+			 -teljesítményük
+			 -végsebességük
+			 -meg néhány speciális dolog
+	Már csak azt nem tudom, hogy hogyan lehetne õket pontosan összemérni
+		Talán úgy lehetne, mit ahogy égen az autós kártyákkal játszottunk 
+			Radio buttonokkal ki lehetne választani, hogy miben mérkõzzenek meg.
