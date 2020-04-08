@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Prog4 hetedik előadás</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/sajat.css"/>
+  </head>
+	<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Első előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">DM</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5"><h1 id="prog4-hetedik-előadás">Prog4 hetedik előadás</h1>
+<blockquote>
+<p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
+</blockquote>
+<h3 id="creational-design-patterns-folytatása">Creational Design Patterns folytatása</h3>
+<h4 id="singleton-pattern">Singleton pattern</h4>
+<ul class="list">
+<li>szürke zónában van, kevésse elfogadott, de sok helyen használják, mert könnyű használni</li>
+<li>&quot;statikus&quot; kreálás, hozzáférési lehetőség --&gt; konstruktort lerejtjük</li>
+<li>egy statikus tulajdonságban érjük el az egy példányt</li>
+<li>sokkal több funkcionalitást biztosít, mivel </li>
+<li>nem DI kompatibilis, nem tesztelhető a statikus tag</li>
+<li>sokak szerint ma már antipattern</li>
+<li>IoC containerrel flexibilissé tehető, evvel használható</li>
+<li>thread-safety elvárás, hiszen létrejöhetne több példány több szál esetén</li>
+<li>kölcsönös kizárás csupán durván szemcsézett megoldás<ul class="list">
+<li>mivel lockolva vannak akkor is a szálak, amikor már van példány</li>
+<li>&quot;double check lock&quot; <ul class="list">
+<li>ebben az esetben több példány már nem jön létre</li>
+<li>probléma, hogy a fordítót meg kell vizsgálni (ismeri-e a double check lockot)</li>
+<li>a hiba a fordító optimalizálásából ered, utasításokat képes az optimizer átrendezni</li>
+<li>pl.: konstruálás esetén, <code>instance = new MyClass()</code> az utasítások sorrendje<center>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="row justify-content-center">
+        <div class="col-auto">
+                <table>
+                        <thead>
+                        <tr>
+                        <th>elvárt sorrend</th>
+                        <th>lehetséges valós sorrend</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td>memóriafoglalás</td>
+                        <td>memóriafoglalás</td>
+                        </tr>
+                        <tr>
+                        <td>példány létrehozása a címen</td>
+                        <td>memóriacím beírása a változóba</td>
+                        </tr>
+                        <tr>
+                        <td>memóriacím beírása a változóba</td>
+                        <td>példány létrehozása a címen</td>
+                        </tr>
+                        </tbody>
+                        </table>
+        </div>
+      </div>
+
+<p>Ekkor lehetséges, hogy az egyik szál visszaad egy olyan példányt, mely még nem készült el, csak a címe létezik. Ennek megoldása lehet, hogy <code>volatile</code> kulcsszóval jelöljük meg, de .NET2 óta ez sem szükséges.
+</center></p>
+<h4 id="builder-pattern">Builder pattern</h4>
+<p>Példányok létrehozásáért felelős, csakúgy, mint a factory pattern. A különbség, hogy itt <strong>konkrét osztályokból</strong> való példányosítást szeretnénk.</p>
+<ul class="list">
+<li>egy builder = egy osztály</li>
+<li>jellemző felhasználás, amikor sok konstruktor paraméter van</li>
+<li>automatikus végrehajtásos megoldás a <strong>BuilderDirector</strong> (lásd Laby játék renderere, meghívogatja a Drawing metódusokat és feltölti a drawingContexet)</li>
+<li>jellemzőbb a manuális használata</li>
+<li><strong>fluent syntax</strong> jól átláthatóvá teszi</li>
+</ul>
+<h4 id="prototype-pattern">Prototype pattern</h4>
+<p>Meglévő példányok másolásáért felelős pattern.</p>
+<ul class="list">
+<li>deep copy = új példány saját memóriaterülettel, az eredeti adataival</li>
+<li>shallow copy = új példány a régi memóriaterületére mutat</li>
+<li>&quot;deep&quot;, mivel pl. ha a példányban van egy tömb, abban referencia típusok, akkor ezeknek mind új memóriaterület kell</li>
+<li><strong>mindig</strong> deep copy-t csinál a prototype pattern</li>
+<li>JavaScript a népszerűségét ennek a mintának köszönheti<ul class="list">
+<li>nincsenek osztálypéldányok</li>
+<li>az első példány legyen = típusdefiníció</li>
+<li>az ezt követő példányok ennek az elsőnek a prototype-jai</li>
+<li>ezzel kvázi meg van oldva a példányosítás problémája</li>
+</ul>
+</li>
+<li>megvalósítás: </li>
+</ul>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">override</span> ColorPrototype <span class="hljs-title">Clone</span>(<span class="hljs-params"></span>)
+</span>{
+    <span class="hljs-comment">// adattagok copy konstruktoros újrapéldányosítása</span>
+    <span class="hljs-comment">// pl. ha lenne egy "favColors" tömb, azt is itt újra létrehoznánk</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Color(red, green, blue);
+}</code></pre><ul class="list">
+<li>.Net-ben viszonylag népszerű, sok helyen használt (ICloneable interfész is van)</li>
+<li>MemberwiseClone() shallow copy-t csinál, de ha az objektumunkban eleve csak egyszerű típusok vannak, akkor ez megegyezik a deep copyval</li>
+<li>MemberwiseClone-ozás után a referencia típusokat kézzel újrapéldányosítjuk, duplikáljuk</li>
+<li>automatizálás reflexióval, vagy szerializációval lehetséges, sokkal kényelmesebb, de lényegesen rosszabb futásidőt produkál</li>
+</ul>
+<h3 id="behavioral-design-patterns">Behavioral Design Patterns</h3>
+<h4 id="iterator-pattern">Iterator pattern</h4>
+<ul class="list">
+<li>szinte minden programnyelv implementálta már</li>
+<li>lényeg, hogy külső lerejtést végezzünk, minden kollekciót ugyanolyan külső szintaxissal kényelmesen be tudjunk járni</li>
+<li>saját típusnál testreszabható, miként akarjuk bejárni azt</li>
+<li>yield return mechanika: <ul class="list">
+<li>ciklus az elemeket bejárni</li>
+<li>visszaadom az aktuális elemet</li>
+<li>folytatom a ciklust</li>
+<li>a belső működés ugyanaz kb, a motorháztető alatt komoly munka folyik</li>
+</ul>
+</li>
+</ul>
+<h4 id="chain-of-responsibility-pattern">Chain of Responsibility pattern</h4>
+<ul class="list">
+<li><code>foreach</code> ciklus használata esetén, vagyis iterator használatánál adatfeldolgozás a cél</li>
+<li>CoR esetén a feldolgozás a lényeg, jellemzően minden elemen szeretnénk valamilyen műveletet végezni</li>
+<li>a háttérben a láncolt lista létéről nem tudunk</li>
+<li>nagy switchek lecserélésére tökéletes</li>
+<li><strong>abstract factory</strong> kiválasztásánál is jól használható</li>
+<li>variációk<ul class="list">
+<li>feltétel nélküli pl. a logger chain: több helyen naplózás, kívülről csak <code>log()</code> látszódik</li>
+<li>feltételes pl. az abstract factory esetén egy kollekcióban vannak az alfactoryk, ezeken végigmegy, és mindenkitől megkérdezi, hogy tud-e adott példányt létrehozni, ha igen, akkor itt megállunk</li>
+<li>a kettő kombinációja nem szerencsés</li>
+</ul>
+</li>
+</ul>
+<h4 id="visitor-pattern">Visitor pattern</h4>
+<p>Egyszerre dolgozik gyűjteményekkel, és szétválasztja a hívót és hívottat.</p>
+<ul class="list">
+<li>visitor = logic, művelet, amit végezni fogunk az elemeken</li>
+<li>acceptor = subject, elem, amin a műveletet végezzük</li>
+<li>a műveletvégzést <strong>mindig</strong> az acceptor dönti el --&gt; ő hívja a visitor <code>Visit()</code> metódusát</li>
+<li>visitor <em>esetleg</em> tudhat az acceptorokról, fordítva nem</li>
+<li><p>öröklés helyett jellemzően interfészek</p>
+<pre class="hljs"><code><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> : <span class="hljs-title">IVisitorAcceptor</span> 
+{
+  <span class="hljs-comment">// personal data</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Accept</span>(<span class="hljs-params">Ivisitor visitor</span>)
+  </span>{
+      <span class="hljs-comment">// Bunch of ifs to decide whether the actual visitor can process the data or not.</span>
+      <span class="hljs-comment">//E.g. if the visitor wants to log to remote host with plain FTP, do we allow it?</span>
+      visitor.Visit(<span class="hljs-keyword">this</span>);
+  }
+}</code></pre></li>
+<li>gyűjteményekre jól általánosítható</li>
+</ul>
+<h4 id="observer-pattern">Observer pattern</h4>
+<ul class="list">
+<li>gyakorlatilag az eseménykezelés klasszikus megoldása</li>
+<li>prog2-n megismert interfészes megoldás nem elterjedt már, obsolete</li>
+<li>delegáltas megoldás sokkal jobb --&gt; classok szintjéről metódusok szintjére lehozzuk az eseménykezelést</li>
+<li>nem kell az (interfész típusú) osztályreferenciát ismerni, csak a metódus szignatúrát kell ismerni, feliratkozáshoz sem szükséges külön metúdus, hiszen a <code>+=</code> operátor tudja ezt</li>
+<li>.Net-ben memory leak állhat elő --&gt; weak reference (GB által bármikor felszabadítható)</li>
+<li>a C# <code>IObserver</code> <strong>nem</strong> ez a pattern, ennél jóval több (Rx framework)</li>
+</ul>
+<h4 id="command-pattern">Command pattern</h4>
+<ul class="list">
+<li>invoker kérését becsomagoljuk egy commandba</li>
+<li>gyakorlatilag receiver megfelelő metódusát hívja meg az invoker, de ezt a referenciát közvetlenül nem ismeri</li>
+<li>cachelésre, load balancingre is kiváló</li>
+<li>relay command megoldja, hogy ne kelljen minden műveletre külön class, csak egy-egy <code>RelayCommand</code> példány</li>
+</ul>
+<h4 id="mediator-pattern">Mediator pattern</h4>
+<p>Jellemzően komponensek összehangolására, felügyeletére használatos.</p>
+<ul class="list">
+<li>pl. üzenetküldés objektumok között, anélkül, hogy tudnának egymásról <strong>referencia</strong> szerint</li>
+<li>a megoldás, hogy csak <strong>azonosítókat</strong> adok át</li>
+<li>nagyon népszerű, ezért rengeted meglévő kód van</li>
+<li>nem csak osztályok szintjén működik, hanem magasabb architekturális szinteken is</li>
+</ul>
+    </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

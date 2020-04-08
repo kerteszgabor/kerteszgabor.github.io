@@ -3,6 +3,10 @@ body.dark-mode {
     color:rgb(255, 255, 255); 
 }
 
+table{
+    color:#111;
+}
+
 
 body.light-mode {
     background-color:rgb(255, 255, 255);
