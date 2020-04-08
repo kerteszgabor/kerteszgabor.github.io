@@ -1,0 +1,5 @@
+Az alapötlet, ahogy megbeszéltük az órán, az hogy van egy ősosztály, a Szoftverek. 
+Ebből származnak a külön-külön megadott szoftverek. Tervben lesz egy tulajdonsága, ami
+a rá jellemző információkat fogja megjeleníteni. A metódus egy leegyszerűsített dolgot
+fog csinálni, ami rá jellemző. Pl: Paint-megjelenít egy képet, World-kiírja a szöveget.
+Egyenlőre ennyi ötletem van ehhez a Projekthez, remélhetőleg még bővűlni gog egy kicsit.
