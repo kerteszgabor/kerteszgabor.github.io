@@ -1,0 +1,10 @@
+Project ötlet:
+
+Egy Formula 1-es játékot szeretnék csinálni, ahol a tavalyi év alapján minden pilóta leggyorsabb körét összehasonlítom minden pályán.
+Minimum két, maximum öt játékos játszhatja, akiknek az a feladatuk, hogy megnyomják a stop gombot miközben a program pörgeti(random sorsol) nekik egy pilótát és a köridejét.
+Előtte random sorsol egy pályát amelyiken játszanak(annak a pályának a köridejeit fogja használni a program).
+Az nyer aki a gyorsabb pilótát kapja.
+
+Varga Marcell 11/
+
+

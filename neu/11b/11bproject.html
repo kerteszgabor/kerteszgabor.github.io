@@ -17,10 +17,10 @@ body{
 
   </head>
   <body>
-<div class="container-fluid d-flex justify-content-center">
-    <article class="markdown-body"><h1 id="projektmunka-visszajelzés-11b">Projektmunka visszajelzés 11b</h1>
+    <article class="markdown-body container"><h1 id="projektmunka-visszajelzés-11b">Projektmunka visszajelzés 11b</h1>
 <blockquote>
-<p>Ha kérdés van, keressetek Discordon vagy <a href="https://www.messenger.com/t/kerteszgabor.official">messengeren</a>!<br>Az elfogadva akkor kerül be, ha teljesen green-light a projekt, és nincs mit rajta módosítani azon kívül, amit írtam esetleg!</p>
+<p>Ha kérdés van, keressetek Discordon vagy <a href="https://www.messenger.com/t/kerteszgabor.official">messengeren</a>!<br>Az elfogadva akkor kerül be, ha teljesen green-light a projekt, és nincs mit rajta módosítani azon kívül, amit írtam esetleg!
+Amíg nem <strong>OK</strong> az elfogadva, addig keressetek meg kérlek, hogy meg tudjuk beszélni a feladatot!</p>
 </blockquote>
 <table>
 <thead>
@@ -51,6 +51,11 @@ body{
 <td>Egész jó, tudjunk összehasonlítani objektumokat minden szempont alapján, amiket írtál. Még agyalj valami plusz funkción esetleg, mert egy kicsit vérszegény az a része</td>
 <td>OK</td>
 </tr>
+<tr>
+<td>Varga Marcell</td>
+<td>Nagyon tetszik, jó ötlet! A random sorsolással érzésem szerint baj lesz (hiszen a random generátor nagyon gyorsan fogja pörgetni a pilótákat, így sokszor jöhet ki ugyanaz, vagy nagyon hasonló helyen lévő pilóta stb..), erre rakok lentebb egy megoldást ami sztem működik, de majd ki kéne próbálni</td>
+<td>OK</td>
+</tr>
 </tbody>
 </table>
 <h2 id="egyéni-kód-segítségek">Egyéni kód segítségek</h2>
@@ -65,8 +70,10 @@ body{
 
         <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> KepPath{ <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;} = <span class="hljs-string">"ferrariKep.jpg"</span> <span class="hljs-comment">// ferrariKep.jpg meg benne van a debugban</span>
     }</code></pre><p>És majd a formon lesz egy <code>PictureBox</code>, aminek a src-jét fogjuk cserélgetni, ezt majd még megbeszéljük, hogy kéne</p>
+<h3 id="varga-marcell">Varga Marcell</h3>
+<p>Gyakorlatilag arra gondoltam, hogy lassítani kéne a random generálás idejét, illetve pontosabban eltolni őket egymástól. Ugye az a gond, hogy a C# pszeudórandom számai a processzoridőből seed-elődnek, tehát, ha valakik teoretikusan &quot;egyszerre&quot; nyomják meg a gombot (szerintem erre egyébként nincs nagy esély, de jobb biztosra menni), akkor egymáshoz nagyon közeli random számot kaphatnak.</p>
+<pre class="hljs"><code>Random rand = <span class="hljs-keyword">new</span> Random(Guid.NewGuid().GetHashCode());</code></pre><p>Ezt a randomot minden játékosnál újrapéldányosítanám ebben a formában, és ebből generálnám a randomot.</p>
     </article>
-</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

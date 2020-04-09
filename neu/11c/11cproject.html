@@ -7,11 +7,20 @@
     <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
     <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
     <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+body{
+  margin: 0 auto;
+}
+</style>
+
   </head>
   <body>
-    <article class="markdown-body container-fluid"><h1 id="projektmunka-visszajelzés-11c">Projektmunka visszajelzés 11c</h1>
+    <article class="markdown-body container"><h1 id="projektmunka-visszajelzés-11c">Projektmunka visszajelzés 11c</h1>
 <blockquote>
-<p>Ha kérdés van, keressetek Discordon vagy <a href="https://www.messenger.com/t/kerteszgabor.official">messengeren</a>!<br>Az elfogadva akkor kerül be, ha teljesen green-light a projekt, és nincs mit rajta módosítani azon kívül, amit írtam esetleg!</p>
+<p>Ha kérdés van, keressetek Discordon vagy <a href="https://www.messenger.com/t/kerteszgabor.official">messengeren</a>!<br>Az elfogadva akkor kerül be, ha teljesen green-light a projekt, és nincs mit rajta módosítani azon kívül, amit írtam esetleg! 
+Amíg nem <strong>OK</strong> az elfogadva, addig keressetek meg kérlek, hogy meg tudjuk beszélni a feladatot!</p>
 </blockquote>
 <table>
 <thead>
@@ -47,8 +56,37 @@
 <td>Alapötlet jó, de bővítsük ki még olyanokkal, hogy van egy összefogó osztály, ami mondjuk csatateret reprezentál, ebben tudod tárolni a hajókat, ilyenek. A megjelenítés talán Formon nehéz lenne, esetleg egy konzolnak nekiugorhatnál, ahol mondjuk valamilyen karakter reprezentálja a hajó fajtákat, ezek ha közel kerülnek egymáshoz harcolhatnak vagy valami, de ez már nagyon sok meló, szóval csak ha van kedved. Valami alap megjelenítés jó lenne azért a listboxokon meg a gombokon túl</td>
 <td>OK</td>
 </tr>
+<tr>
+<td>Szabó Richárd</td>
+<td>Szerintem teljesen jó, ha gondolod, a megjelenítés lehetne úgy megoldva, hogy ha kiválasztunk egy fegyvert annak megjelennek az adatai (ezeket adattagokként tárolod ugye az osztályban), illetve mellé egy kép mondjuk nagyban, hogy hogy néz ki. Ezt úgy lehet megoldani nagy vonalakban, hogy adattagként eltárolod a kép nevét, és eltárolod minden fegyver példányhoz, lásd lejjebb.</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Sulyok Dániel</td>
+<td>Jó nehéz feladat, de jó ötlet. Ezt a problémát úgy hívják, hogy 0-1 hátizsák probléma. A lényege, hogy adott egy maximális keret, és ezt kell a legoptimálisabban megtölteni termékekkel. Dinamikus programozással, ún. mohó algoritmussal lehet megoldani a problémát. <a href="https://youtu.be/8LusJS5-AGo">https://youtu.be/8LusJS5-AGo</a>, ezt nézd meg, és majd beszéljünk róla!</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Zágoni Bence</td>
+<td>Nagyon kevés a leírás, és ez amúgy is egy-az-egyben az arénás feladat. Találj ki mást, várom!</td>
+</tr>
 </tbody>
 </table>
+<h2 id="egyéni-kód-segítségek">Egyéni kód segítségek</h2>
+<h3 id="szabó-ricsi">Szabó Ricsi</h3>
+<p>Ilyesmire gondoltam:</p>
+<pre class="hljs"><code>    <span class="hljs-keyword">class</span> <span class="hljs-title">RandomFegyver</span> : <span class="hljs-title">OsFegyver</span>
+    {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> FegyverTeljesNeve {<span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;}
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> TarMeret {<span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;}
+
+        <span class="hljs-comment">// stb... egyéb adatok, ezt te tudod</span>
+        <span class="hljs-comment">// ...</span>
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> KepPath{ <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;} = <span class="hljs-string">"randomFegyo.jpg"</span> <span class="hljs-comment">// randomFegyo.jpg meg benne van a debugban</span>
+    }</code></pre><p>És majd a formon lesz egy <code>PictureBox</code>, aminek a src-jét fogjuk cserélgetni, ezt majd még megbeszéljük, hogy kéne</p>
     </article>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
