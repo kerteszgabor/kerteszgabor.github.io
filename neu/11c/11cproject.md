@@ -14,7 +14,17 @@
 |Szabó Richárd   	|Szerintem teljesen jó, ha gondolod, a megjelenítés lehetne úgy megoldva, hogy ha kiválasztunk egy fegyvert annak megjelennek az adatai (ezeket adattagokként tárolod ugye az osztályban), illetve mellé egy kép mondjuk nagyban, hogy hogy néz ki. Ezt úgy lehet megoldani nagy vonalakban, hogy adattagként eltárolod a kép nevét, és eltárolod minden fegyver példányhoz, lásd lejjebb.  |OK   	|
 |Sulyok Dániel   |Jó nehéz feladat, de jó ötlet. Ezt a problémát úgy hívják, hogy 0-1 hátizsák probléma. A lényege, hogy adott egy maximális keret, és ezt kell a legoptimálisabban megtölteni termékekkel. Dinamikus programozással, ún. mohó algoritmussal lehet megoldani a problémát. https://youtu.be/8LusJS5-AGo, ezt nézd meg, és majd beszéljünk róla!   |OK   |
 |Zágoni Bence   |Nagyon kevés a leírás, és ez amúgy is egy-az-egyben az arénás feladat. Találj ki mást, várom!   |   |
-|Leibinger Bence   |Jó lesz, nem is nagyon kell bonyolítani, ez bőven elég   |OK   |
+|Leibinger Bence   |Jó lesz, nem is nagyon kell bonyolítani, ez bőven elég  |OK   |
+
+## Félkész projektek visszajelzése
+
+|Név   |Megjegyzés   |Jelenlegi jegy   |
+|---	|---	|---	|
+|Molnár Melinda   | Egész jó, a karakterkódolás az ismertetőben fura, meg mintha nem lennének ékezetek, majd nézd meg esetleg. | 3 |
+|Sulyok Dani   |Nagyon tetszik, nagyon jól működik. Az osztályöröklődés annyira így viszont nem jó, lent leírom, szerintem hogy kéne.   | 4  |
+|Szabó Ricsi   |holnap megnézem, bocsi   |   |
+| Vaszta Matyi  |holnapi   |   |
+
 
 ## Egyéni kód segítségek
 
@@ -33,3 +43,31 @@ Ilyesmire gondoltam:
     }
 ```
 És majd a formon lesz egy `PictureBox`, aminek a src-jét fogjuk cserélgetni, ezt majd még megbeszéljük, hogy kéne
+
+### Sulyok Dani
+
+Így kéne helyesen megcsinálni:
+```cs 
+namespace SulyokDániel_11c_Projekt
+{
+    abstract class Ososztaly
+    { 
+        public int Ertek { get; set; }
+        public Ososztaly(int ertek)
+        {
+            this.Ertek = ertek;
+        }
+        public static string datum = DateTime.Today.ToString();
+    }
+    class Filmek : Ososztaly
+    {
+        public Filmek(int ertek) : base(ertek)
+        {
+        }
+    }
+}
+```
+A mentő ablaknál pedig ezzel automatikusan kitölti txt-re alul, szóval jó formátumban menti el:  
+`            szamla.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";`  
+Ezt még az if előtt szúrd be!
+Írj, ha nem annyira érthető! Beszéljük meg

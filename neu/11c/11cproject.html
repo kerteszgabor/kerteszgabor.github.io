@@ -87,6 +87,37 @@ Amíg nem <strong>OK</strong> az elfogadva, addig keressetek meg kérlek, hogy m
 </tr>
 </tbody>
 </table>
+<h2 id="félkész-projektek-visszajelzése">Félkész projektek visszajelzése</h2>
+<table>
+<thead>
+<tr>
+<th>Név</th>
+<th>Megjegyzés</th>
+<th>Jelenlegi jegy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Molnár Melinda</td>
+<td>Egész jó, a karakterkódolás az ismertetőben fura, meg mintha nem lennének ékezetek, majd nézd meg esetleg.</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Sulyok Dani</td>
+<td>Nagyon tetszik, nagyon jól működik. Az osztályöröklődés annyira így viszont nem jó, lent leírom, szerintem hogy kéne.</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Szabó Ricsi</td>
+<td>holnap megnézem, bocsi</td>
+<td></td>
+</tr>
+<tr>
+<td>Vaszta Matyi</td>
+<td>holnapi</td>
+</tr>
+</tbody>
+</table>
 <h2 id="egyéni-kód-segítségek">Egyéni kód segítségek</h2>
 <h3 id="szabó-ricsi">Szabó Ricsi</h3>
 <p>Ilyesmire gondoltam:</p>
@@ -99,6 +130,27 @@ Amíg nem <strong>OK</strong> az elfogadva, addig keressetek meg kérlek, hogy m
         <span class="hljs-comment">// ...</span>
         <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> KepPath{ <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;} = <span class="hljs-string">"randomFegyo.jpg"</span> <span class="hljs-comment">// randomFegyo.jpg meg benne van a debugban</span>
     }</code></pre><p>És majd a formon lesz egy <code>PictureBox</code>, aminek a src-jét fogjuk cserélgetni, ezt majd még megbeszéljük, hogy kéne</p>
+<h3 id="sulyok-dani">Sulyok Dani</h3>
+<p>Így kéne helyesen megcsinálni:</p>
+<pre class="hljs"><code><span class="hljs-keyword">namespace</span> <span class="hljs-title">SulyokD</span>á<span class="hljs-title">niel_11c_Projekt</span>
+{
+    <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Ososztaly</span>
+    { 
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> Ertek { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Ososztaly</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> ertek</span>)
+        </span>{
+            <span class="hljs-keyword">this</span>.Ertek = ertek;
+        }
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span> datum = DateTime.Today.ToString();
+    }
+    <span class="hljs-keyword">class</span> <span class="hljs-title">Filmek</span> : <span class="hljs-title">Ososztaly</span>
+    {
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Filmek</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> ertek</span>) : <span class="hljs-title">base</span>(<span class="hljs-params">ertek</span>)
+        </span>{
+        }
+    }
+}</code></pre><p>A mentő ablaknál pedig ezzel automatikusan kitölti txt-re alul, szóval jó formátumban menti el:<br><code>szamla.Filter = &quot;txt files (*.txt)|*.txt|All files (*.*)|*.*&quot;;</code><br>Ezt még az if előtt szúrd be!
+Írj, ha nem annyira érthető! Beszéljük meg</p>
     </article>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
