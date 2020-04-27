@@ -22,27 +22,50 @@
 |---	|---	|---	|
 |Molnár Melinda   | Egész jó, a karakterkódolás az ismertetőben fura, meg mintha nem lennének ékezetek, majd nézd meg esetleg. | 3 |
 |Sulyok Dani   |Nagyon tetszik, nagyon jól működik. Az osztályöröklődés annyira így viszont nem jó, lent leírom, szerintem hogy kéne.   | 4  |
-|Szabó Ricsi   |holnap megnézem, bocsi   |   |
-| Vaszta Matyi  |holnapi   |   |
+|Szabó Ricsi   |Szerintem jó lesz, lejebb nézd meg amit írtam! | 2   |
+| Vaszta Matyi  |Jó  lesz, osztályok jók, látom megjelenítés is van, viszont most jönne a szívós játéklogika mögé :D Kicsit még keveset foglalkoztál vele, de ha kész lesz, jó lesz    | 1/2  |
 
 
 ## Egyéni kód segítségek
 
 ### Szabó Ricsi
+A `KepPath` nyugodtan mehet adattagnak+hozzá tulajdonság az ősbe, és akkor minden fegyónál be tudod állítani a képet. Megjelenítés: 
 
-Ilyesmire gondoltam:
+<img src="beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\fegyo.png"
+     alt="Fegyó"
+     class="img-responsive center-block" />
+
+Húzz fel egy `PictureBox`-ot, majd válaszd ki a listboxodat, amiben az elemek vannak, ekkor a properties fülön a kis villámnál, ahol az események vannak, keresd ki a `SelectedIndexChanged` eseményt, dupla katt bele, majd:
+
 ```cs
-    class RandomFegyver : OsFegyver
+namespace Szabó_Richárd_Projekt
+{
+    public partial class Form1 : Form
     {
-        public string FegyverTeljesNeve {get; set;}
-        public int TarMeret {get; set;}
-        
-        // stb... egyéb adatok, ezt te tudod
-        // ...
-        public string KepPath{ get; set;} = "randomFegyo.jpg" // randomFegyo.jpg meg benne van a debugban
+        List<Weapons> fegyok = new List<Weapons>(); // itt tárolom a fegyókat
+        public Form1()
+        {
+            fegyok.Add(new Sheriff());      // csak egy mintát hozzáadtam
+            InitializeComponent();
+        }
+
+        private void bt_indit_Click(object sender, EventArgs e)
+        {
+            foreach (var fegyo in fegyok)
+            {
+                listBox1.Items.Add(fegyo.ToString());   // overrideold az ős .ToStringjét, úgy, hogy azt írja a listboxba, amit szeretnél
+            }                                           // a neveket nem tároltad, de nem baj, mert a .GetType().Name pont ezt adja meg!!
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) // minden egyes kattintáskor, amikor másikat választunk ki a listboxban, ez lefut
+        {
+            var kivalasztottIndex = listBox1.SelectedIndex;  // ez megadja hányadik elemet választottuk = listában ugyanez az index!!!
+            pictureBox1.ImageLocation = fegyok[kivalasztottIndex].KepPath;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
     }
+}
 ```
-És majd a formon lesz egy `PictureBox`, aminek a src-jét fogjuk cserélgetni, ezt majd még megbeszéljük, hogy kéne
 
 ### Sulyok Dani
 

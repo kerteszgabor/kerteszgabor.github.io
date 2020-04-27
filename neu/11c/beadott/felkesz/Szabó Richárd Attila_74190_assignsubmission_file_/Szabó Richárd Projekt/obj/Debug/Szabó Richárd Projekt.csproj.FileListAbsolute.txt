@@ -1,0 +1,19 @@
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.csprojAssemblyReference.cache
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\obj\Debug\Szabó_Richárd_Projekt.Form1.resources
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\obj\Debug\Szabó_Richárd_Projekt.Properties.Resources.resources
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.csproj.GenerateResource.cache
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\bin\Debug\Szabó Richárd Projekt.exe.config
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\bin\Debug\Szabó Richárd Projekt.exe
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\bin\Debug\Szabó Richárd Projekt.pdb
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.exe
+E:\DIGITÁLIS OKTATÁS\Programozás\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.pdb
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\bin\Debug\Szabó Richárd Projekt.exe.config
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\bin\Debug\Szabó Richárd Projekt.exe
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\bin\Debug\Szabó Richárd Projekt.pdb
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.csprojAssemblyReference.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\obj\Debug\Szabó_Richárd_Projekt.Form1.resources
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\obj\Debug\Szabó_Richárd_Projekt.Properties.Resources.resources
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.csproj.GenerateResource.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.csproj.CoreCompileInputs.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.exe
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\Szabó Richárd Projekt\obj\Debug\Szabó Richárd Projekt.pdb

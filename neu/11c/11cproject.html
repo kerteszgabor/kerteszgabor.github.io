@@ -109,28 +109,50 @@ Amíg nem <strong>OK</strong> az elfogadva, addig keressetek meg kérlek, hogy m
 </tr>
 <tr>
 <td>Szabó Ricsi</td>
-<td>holnap megnézem, bocsi</td>
-<td></td>
+<td>Szerintem jó lesz, lejebb nézd meg amit írtam!</td>
+<td>2</td>
 </tr>
 <tr>
 <td>Vaszta Matyi</td>
-<td>holnapi</td>
+<td>Jó  lesz, osztályok jók, látom megjelenítés is van, viszont most jönne a szívós játéklogika mögé :D Kicsit még keveset foglalkoztál vele, de ha kész lesz, jó lesz</td>
+<td>1/2</td>
 </tr>
 </tbody>
 </table>
 <h2 id="egyéni-kód-segítségek">Egyéni kód segítségek</h2>
 <h3 id="szabó-ricsi">Szabó Ricsi</h3>
-<p>Ilyesmire gondoltam:</p>
-<pre class="hljs"><code>    <span class="hljs-keyword">class</span> <span class="hljs-title">RandomFegyver</span> : <span class="hljs-title">OsFegyver</span>
+<p>A <code>KepPath</code> nyugodtan mehet adattagnak+hozzá tulajdonság az ősbe, és akkor minden fegyónál be tudod állítani a képet. Megjelenítés: </p>
+<p class="img-container"><img src="beadott\felkesz\Szabó Richárd Attila_74190_assignsubmission_file_\fegyo.png"
+     alt="Fegyó"
+     class="img-responsive center-block" /></p>
+<p>Húzz fel egy <code>PictureBox</code>-ot, majd válaszd ki a listboxodat, amiben az elemek vannak, ekkor a properties fülön a kis villámnál, ahol az események vannak, keresd ki a <code>SelectedIndexChanged</code> eseményt, dupla katt bele, majd:</p>
+<pre class="hljs"><code><span class="hljs-keyword">namespace</span> <span class="hljs-title">Szab</span>ó_<span class="hljs-title">Rich</span>á<span class="hljs-title">rd_Projekt</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Form1</span> : <span class="hljs-title">Form</span>
     {
-        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> FegyverTeljesNeve {<span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;}
-        <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> TarMeret {<span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;}
+        List&lt;Weapons&gt; fegyok = <span class="hljs-keyword">new</span> List&lt;Weapons&gt;(); <span class="hljs-comment">// itt tárolom a fegyókat</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Form1</span>(<span class="hljs-params"></span>)
+        </span>{
+            fegyok.Add(<span class="hljs-keyword">new</span> Sheriff());      <span class="hljs-comment">// csak egy mintát hozzáadtam</span>
+            InitializeComponent();
+        }
 
-        <span class="hljs-comment">// stb... egyéb adatok, ezt te tudod</span>
-        <span class="hljs-comment">// ...</span>
-        <span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> KepPath{ <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>;} = <span class="hljs-string">"randomFegyo.jpg"</span> <span class="hljs-comment">// randomFegyo.jpg meg benne van a debugban</span>
-    }</code></pre><p>És majd a formon lesz egy <code>PictureBox</code>, aminek a src-jét fogjuk cserélgetni, ezt majd még megbeszéljük, hogy kéne</p>
-<h3 id="sulyok-dani">Sulyok Dani</h3>
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bt_indit_Click</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, EventArgs e</span>)
+        </span>{
+            <span class="hljs-keyword">foreach</span> (<span class="hljs-keyword">var</span> fegyo <span class="hljs-keyword">in</span> fegyok)
+            {
+                listBox1.Items.Add(fegyo.ToString());   <span class="hljs-comment">// overrideold az ős .ToStringjét, úgy, hogy azt írja a listboxba, amit szeretnél</span>
+            }                                           <span class="hljs-comment">// a neveket nem tároltad, de nem baj, mert a .GetType().Name pont ezt adja meg!!</span>
+        }
+
+        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">listBox1_SelectedIndexChanged</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, EventArgs e</span>) <span class="hljs-comment">// minden egyes kattintáskor, amikor másikat választunk ki a listboxban, ez lefut</span>
+        </span>{
+            <span class="hljs-keyword">var</span> kivalasztottIndex = listBox1.SelectedIndex;  <span class="hljs-comment">// ez megadja hányadik elemet választottuk = listában ugyanez az index!!!</span>
+            pictureBox1.ImageLocation = fegyok[kivalasztottIndex].KepPath;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+    }
+}</code></pre><h3 id="sulyok-dani">Sulyok Dani</h3>
 <p>Így kéne helyesen megcsinálni:</p>
 <pre class="hljs"><code><span class="hljs-keyword">namespace</span> <span class="hljs-title">SulyokD</span>á<span class="hljs-title">niel_11c_Projekt</span>
 {
