@@ -1,0 +1,19 @@
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\bin\Debug\ProgramozásProjeckt.exe.config
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\bin\Debug\ProgramozásProjeckt.exe
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\bin\Debug\ProgramozásProjeckt.pdb
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.csprojAssemblyReference.cache
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.Properties.Resources.resources
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.csproj.GenerateResource.cache
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.csproj.CoreCompileInputs.cache
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.exe
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.pdb
+C:\Users\Szabolcs\Desktop\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.f_munkás.resources
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\bin\Debug\ProgramozásProjeckt.exe.config
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\bin\Debug\ProgramozásProjeckt.exe
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\bin\Debug\ProgramozásProjeckt.pdb
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.csprojAssemblyReference.cache
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.f_munkás.resources
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.Properties.Resources.resources
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.csproj.GenerateResource.cache
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.exe
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Kövér Szabolcs_72909_assignsubmission_file_\ProgramozásProjeckt\ProgramozásProjeckt\obj\Debug\ProgramozásProjeckt.pdb

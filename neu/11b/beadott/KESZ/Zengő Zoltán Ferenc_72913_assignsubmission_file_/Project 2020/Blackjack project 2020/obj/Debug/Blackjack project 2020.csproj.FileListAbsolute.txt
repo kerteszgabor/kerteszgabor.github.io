@@ -1,0 +1,10 @@
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\bin\Debug\Blackjack project 2020.exe.config
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\bin\Debug\Blackjack project 2020.exe
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\bin\Debug\Blackjack project 2020.pdb
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\obj\Debug\Blackjack project 2020.csprojAssemblyReference.cache
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\obj\Debug\Blackjack_project_2020.Properties.Resources.resources
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\obj\Debug\Blackjack project 2020.csproj.GenerateResource.cache
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\obj\Debug\Blackjack project 2020.csproj.CoreCompileInputs.cache
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\obj\Debug\Blackjack project 2020.exe
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\obj\Debug\Blackjack project 2020.pdb
+C:\Users\#Gyuluska\Desktop\Project 2020\Blackjack project 2020\obj\Debug\Blackjack_project_2020.Blackjack.resources
