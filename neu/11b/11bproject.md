@@ -3,10 +3,15 @@
 > Ha kérdés van, keressetek Discordon vagy [messengeren](https://www.messenger.com/t/kerteszgabor.official)!  
 > Az ajánlott jegyet el tudod fogadni, akkor az kerül be a naplóba 200%-os jegyként. Ha jobbat szeretnél, küldd el újra a munkát feljavítva!
 
-<br>
-
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Hali!</strong> Az ötösök és egyesek automatikusan bekerülnek, illetve a csillagos ötös +1 50%-os ötös:)
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>A csillagok pedig...</strong> A csillagos ötös az +1 50%-os ötös:)
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -20,7 +25,7 @@
 |Várhegyi Roland   	|Nem kaptam semmit 	|1 	|
 |Varga Marcell   |Nem kaptam semmit  |1 |
 |Vilmánszki Marcell   |Nem kaptam semmit |1   |
-|Kövér Szabolcs   |Amit csináltál, az jó, csak sajnos kevés (már a tervezetnél is írtam). Abszolút semmit nem interaktálnak egymással az osztályok, csak vannak. Ez kb alapnak jó egyelőre  |   |
+|Kövér Szabolcs   |Amit csináltál, az jó, csak sajnos kevés (már a tervezetnél is írtam). Abszolút semmit nem interaktálnak egymással az osztályok, csak vannak. Ez kb alapnak jó egyelőre  | 3  |
 |Szöghy Richárd   |Király :D mondjuk én Demogorgon szerettem volna lenni :D de tényleg szép munka különben, és köszi a részletes dokumentációt  |5*   |
 |Vörös Csanád   |Tetszett a háttér, meg az állatok:) Szép munka! |5   |
 |Zengő Zoltán   |Tetszik, jó sokat dolgozhattál vele. Ha kicsit többet foglalkoztál volna az OOP-val, akkor ezt a 3k sort szerintem le lehetett volna redukálni kb 1000 sorra. Persze az sem kevés, de az ismétlődő kinullázások pl mind megoldhatóak ciklusokkal. Ettől független, az effortért, meg a sok funkció miatt adok plusz ötöst. Örülnék, ha jövőre órán is kicsit aktívabb lennél, meg figyelnél, mert tök jó dolgokat tudnál csinálni azzal a tudással, amit ott veszünk | 5*  |
