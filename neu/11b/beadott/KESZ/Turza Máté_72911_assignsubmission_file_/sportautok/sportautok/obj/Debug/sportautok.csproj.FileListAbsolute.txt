@@ -1,0 +1,19 @@
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\obj\Debug\sportautok.csprojAssemblyReference.cache
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\obj\Debug\sportautok.Form1.resources
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\obj\Debug\sportautok.Properties.Resources.resources
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\obj\Debug\sportautok.csproj.GenerateResource.cache
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\obj\Debug\sportautok.csproj.CoreCompileInputs.cache
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\bin\Debug\sportautok.exe.config
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\bin\Debug\sportautok.exe
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\bin\Debug\sportautok.pdb
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\obj\Debug\sportautok.exe
+C:\Users\turza\Desktop\Programozás\PROJEKT\sportautok\sportautok\obj\Debug\sportautok.pdb
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\bin\Debug\sportautok.exe.config
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\bin\Debug\sportautok.exe
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\bin\Debug\sportautok.pdb
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\obj\Debug\sportautok.csprojAssemblyReference.cache
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\obj\Debug\sportautok.Form1.resources
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\obj\Debug\sportautok.Properties.Resources.resources
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\obj\Debug\sportautok.csproj.GenerateResource.cache
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\obj\Debug\sportautok.exe
+C:\Users\Kertész Gábor\source\repos\github.io\kerteszgabor.github.io\neu\11b\beadott\KESZ\Turza Máté_72911_assignsubmission_file_\sportautok\sportautok\obj\Debug\sportautok.pdb
