@@ -1,20 +1,27 @@
 # Projektmunka visszajelzés 11c
 
 > Ha kérdés van, keressetek Discordon vagy [messengeren](https://www.messenger.com/t/kerteszgabor.official)!  
-> Az elfogadva akkor kerül be, ha teljesen green-light a projekt, és nincs mit rajta módosítani azon kívül, amit írtam esetleg! 
-> Amíg nem **OK** az elfogadva, addig keressetek meg kérlek, hogy meg tudjuk beszélni a feladatot!
 
-|Név   	|Megjegyzés   	|Elfogadva   	|
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Hali!</strong> Jegyek a naplóban.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+|Név   	|Megjegyzés   	|Jegy   	|
 |---	|---	|---	|
-|Mészáros Dominik   	|Teljesen jó, de ne egy tulajdonságban tárold el az adatokat, hanem csinálj rá külön adattagokat/auto propertyket! pl minden szoftvernek van `public int MemoriaIgeny{}` tulajdonsága, stb...   	| OK  	|
-|Molnár Melinda   	    |Jó lesz, dobjuk majd még fel egy-két dologgal, hogy kicsit izgibb legyen, de a szerkezet teljesen jó. Pl. amit mondtam is szerintem, hogy bizonyos időközönként frissül a RAM, azt Timerrel meg lehet oldani, talán másnak is fog ilyen kelleni, majd rakok fel hozzá egy rövid leírást, hogy kell használni.   	|  OK 	|
-|Plachi Szilárd   	    |Ez így nagyon kevés, 5 szó az nem egy projekt tervezet  	|   	|
-|Soltész Dávid   	    |Jó lesz, de mindenképpen legyenek saját osztályok (örökléssel stb..), ne csak a már megírtakat használd   	| Maybe  	|
-|Vaszta Mátyás   	    |Alapötlet jó, de bővítsük ki még olyanokkal, hogy van egy összefogó osztály, ami mondjuk csatateret reprezentál, ebben tudod tárolni a hajókat, ilyenek. A megjelenítés talán Formon nehéz lenne, esetleg egy konzolnak nekiugorhatnál, ahol mondjuk valamilyen karakter reprezentálja a hajó fajtákat, ezek ha közel kerülnek egymáshoz harcolhatnak vagy valami, de ez már nagyon sok meló, szóval csak ha van kedved. Valami alap megjelenítés jó lenne azért a listboxokon meg a gombokon túl    	| OK  	|
-|Szabó Richárd   	|Szerintem teljesen jó, ha gondolod, a megjelenítés lehetne úgy megoldva, hogy ha kiválasztunk egy fegyvert annak megjelennek az adatai (ezeket adattagokként tárolod ugye az osztályban), illetve mellé egy kép mondjuk nagyban, hogy hogy néz ki. Ezt úgy lehet megoldani nagy vonalakban, hogy adattagként eltárolod a kép nevét, és eltárolod minden fegyver példányhoz, lásd lejjebb.  |OK   	|
-|Sulyok Dániel   |Jó nehéz feladat, de jó ötlet. Ezt a problémát úgy hívják, hogy 0-1 hátizsák probléma. A lényege, hogy adott egy maximális keret, és ezt kell a legoptimálisabban megtölteni termékekkel. Dinamikus programozással, ún. mohó algoritmussal lehet megoldani a problémát. https://youtu.be/8LusJS5-AGo, ezt nézd meg, és majd beszéljünk róla!   |OK   |
-|Zágoni Bence   |Nagyon kevés a leírás, és ez amúgy is egy-az-egyben az arénás feladat. Találj ki mást, várom!   |   |
-|Leibinger Bence   |Jó lesz, nem is nagyon kell bonyolítani, ez bőven elég  |OK   |
+|Mészáros Dominik   	|Az ős konstruktora nem csinál semmit, az adattagokat ott kellett volna beállítani, és nem a leszármazottakban. A Paintnél a képet nem így kellett volna beállítani, hanem ahogy lent írtam a Ricsinek. Van egy metódusod, ami bekér egy képet, és visszadja azt, tehát nem csinál semmit:) A beolvasásban pedig a `else if (sor[0] == "Paint")` elég durva hard coding. :D Ez most sajnos nem sikerült olyan jól, mint szokott, sajnálom :/ | 3 	|
+|Molnár Melinda   	    |Kicsit sok a kódismétlés, a beolvasást meg lehetne írni rövidebben, illetve a sok labelezés is ilyesmi. Ez lehet az én hibám is, nem nagyon néztük át, hogy kell egyszerre több labelt kezelni, nem tartottam akkor fontosnak, most meg már kvázi nincs rendes óránk:) Amúgy jó munka, az osztályok kicsit vérszegények, egy összehasonlító metódus vagy egy <> operátor felülírás elfért volna még. |  4/5 	|
+|Plachi Szilárd   	    |Nem kaptam semmit, tudom, hogy kórházban voltál, de már előtte kellett volna valaminek készülni. Úgy tudom múlt héten kiengedtek, de azóta sem került fel semmi. | 1  	|
+|Soltész Dávid   	    |Azt hiszem múltkor megbeszéltük a dolgot. Ennyit tudtam erre adni, sajnálom :/| 1/2  	|
+|Vaszta Mátyás   	    |Hú Matyi, ez most nagyon nem adta ki sajnos. Azok az ifek, amik beterítik a képernyőt biztosan nem a jó megközelítései a dolognak. Az OOP lényeg meg elveszett így. Ha érdekel mi lett volna a jó irány, ezt találtam a neten: https://exceptionnotfound.net/modeling-battleship-in-csharp-components-and-setup/ | 2  	|
+|Szabó Richárd   	|Csak összeállt ez:) mondjuk a végére az ősosztályban lettek fura dolgok, kicsit kesze-kusza, de sebaj. A másik, hogy a lista elemeinek megszámolására segédváltozót fenntartani felesleges, hiszen `fegyok.Count` éppen ezt adja meg, de ez csak apróság. |5   	|
+|Sulyok Dániel   |Ez kb ugyanaz, mint amit a múltkorra leadtál. Az már egész jó volt, de írtam kódot hozzá, amit csak be kellett volna másolni konkrétan, viszont ez nem történt meg. | 4   |
+|Zágoni Bence   |Nem kaptam semmit |  1 |
+|Leibinger Bence   | Nem kaptam semmit |1   |
+
+<hr>
 
 ## Félkész projektek visszajelzése
 

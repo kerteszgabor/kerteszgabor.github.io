@@ -1,0 +1,19 @@
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\bin\Debug\Szoftver.exe.config
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\bin\Debug\Szoftver.exe
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\bin\Debug\Szoftver.pdb
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\obj\Debug\Szoftver.csprojResolveAssemblyReference.cache
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\obj\Debug\Szoftver.Form1.resources
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\obj\Debug\Szoftver.Properties.Resources.resources
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\obj\Debug\Szoftver.csproj.GenerateResource.Cache
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\obj\Debug\Szoftver.exe
+C:\Users\Dominik\Desktop\C# gyakorló feladatok\Házi proggxak\Szoftver\Szoftver\obj\Debug\Szoftver.pdb
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\bin\Debug\Szoftver.exe.config
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\bin\Debug\Szoftver.exe
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\bin\Debug\Szoftver.pdb
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\obj\Debug\Szoftver.csprojAssemblyReference.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\obj\Debug\Szoftver.Form1.resources
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\obj\Debug\Szoftver.Properties.Resources.resources
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\obj\Debug\Szoftver.csproj.GenerateResource.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\obj\Debug\Szoftver.csproj.CoreCompileInputs.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\obj\Debug\Szoftver.exe
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Mészáros Dominik_78089_assignsubmission_file_\Szoftver\Szoftver\obj\Debug\Szoftver.pdb

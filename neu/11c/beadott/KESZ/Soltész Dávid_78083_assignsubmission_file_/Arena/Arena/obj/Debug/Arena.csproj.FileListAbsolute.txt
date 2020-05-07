@@ -1,0 +1,27 @@
+C:\Users\User\Desktop\VS gyak\Arena\Arena\obj\Debug\Arena.csprojAssemblyReference.cache
+C:\Users\User\Desktop\VS gyak\Arena\Arena\obj\Debug\Arena.Form1.resources
+C:\Users\User\Desktop\VS gyak\Arena\Arena\obj\Debug\Arena.Properties.Resources.resources
+C:\Users\User\Desktop\VS gyak\Arena\Arena\obj\Debug\Arena.csproj.GenerateResource.cache
+C:\Users\User\Desktop\VS gyak\Arena\Arena\obj\Debug\Arena.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\VS gyak\Arena\Arena\bin\Debug\Arena.exe.config
+C:\Users\User\Desktop\VS gyak\Arena\Arena\bin\Debug\Arena.exe
+C:\Users\User\Desktop\VS gyak\Arena\Arena\bin\Debug\Arena.pdb
+C:\Users\User\Desktop\VS gyak\Arena\Arena\obj\Debug\Arena.exe
+C:\Users\User\Desktop\VS gyak\Arena\Arena\obj\Debug\Arena.pdb
+C:\Users\Dávid\Desktop\Arena\Arena\bin\Debug\Arena.exe.config
+C:\Users\Dávid\Desktop\Arena\Arena\bin\Debug\Arena.exe
+C:\Users\Dávid\Desktop\Arena\Arena\bin\Debug\Arena.pdb
+C:\Users\Dávid\Desktop\Arena\Arena\obj\Debug\Arena.csprojAssemblyReference.cache
+C:\Users\Dávid\Desktop\Arena\Arena\obj\Debug\Arena.Form1.resources
+C:\Users\Dávid\Desktop\Arena\Arena\obj\Debug\Arena.Properties.Resources.resources
+C:\Users\Dávid\Desktop\Arena\Arena\obj\Debug\Arena.csproj.GenerateResource.cache
+C:\Users\Dávid\Desktop\Arena\Arena\obj\Debug\Arena.csproj.CoreCompileInputs.cache
+C:\Users\Dávid\Desktop\Arena\Arena\obj\Debug\Arena.exe
+C:\Users\Dávid\Desktop\Arena\Arena\obj\Debug\Arena.pdb
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Soltész Dávid_78083_assignsubmission_file_\Arena\Arena\obj\Debug\Arena.csprojAssemblyReference.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Soltész Dávid_78083_assignsubmission_file_\Arena\Arena\obj\Debug\Arena.Form1.resources
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Soltész Dávid_78083_assignsubmission_file_\Arena\Arena\obj\Debug\Arena.Properties.Resources.resources
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Soltész Dávid_78083_assignsubmission_file_\Arena\Arena\obj\Debug\Arena.csproj.GenerateResource.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Soltész Dávid_78083_assignsubmission_file_\Arena\Arena\obj\Debug\Arena.csproj.CoreCompileInputs.cache
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Soltész Dávid_78083_assignsubmission_file_\Arena\Arena\obj\Debug\Arena.exe
+C:\Users\gabor\Desktop\kerteszgabor.github.io\neu\11c\beadott\KESZ\Soltész Dávid_78083_assignsubmission_file_\Arena\Arena\obj\Debug\Arena.pdb
