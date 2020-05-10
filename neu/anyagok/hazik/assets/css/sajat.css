@@ -1,0 +1,33 @@
+body.dark-mode {
+    background-color:#111;
+    color:rgb(255, 255, 255); 
+}
+
+table{
+    color:#111;
+}
+
+
+body.light-mode {
+    background-color:rgb(255, 255, 255);
+    color:#111;
+}
+
+#darkmodeSwitcher{
+    color: #eee;
+    margin: 0 auto;
+}
+
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 45px;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 15px;
+    }
+}
