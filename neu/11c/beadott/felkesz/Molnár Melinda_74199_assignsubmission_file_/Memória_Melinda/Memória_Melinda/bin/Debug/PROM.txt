@@ -1,1 +1,0 @@
-PROM;64;csak olvashato;nem lehet;nem;gyors;olcso

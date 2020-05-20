@@ -1,1 +1,0 @@
-form alapú kártyajátékot tervezek csinálni

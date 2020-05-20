@@ -1,5 +1,0 @@
-Ork:Elso:3
-Ork:Masodik:6
-Ogre:Harmadik:2
-Ork:Negyedik:5
-Troll:Otodik:1

@@ -1,2 +1,0 @@
-Word;1983;Microsoft;Összesen több mint 30 főbb verziót adtak ki belőle több különböző platformra.
-Paint;1985;Microsoft;Nagyon sikeres szofter és 2017-ben kiadtak belőle egy 3D-s verziót is.

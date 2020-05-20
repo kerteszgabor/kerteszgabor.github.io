@@ -1,5 +1,0 @@
-admin;admin;100000;0000-0000-0000-0000;00/00;0;90000;admin@gmail.com
-user1;user1;37000;1111-2222-3333-4444;04/22;141;20000;user1@gmail.com
-Szotya;Bigott456;25000;0000-0000-0000-0000;00/00;0;0;szotya04@gmail.com
-Teszt;asd;25000;0000-0000-0000-0000;00/00;0;0;teszt@gmail.com
-Gabi;Fradi1899;25000;0000-0000-0000-0000;00/00;0;0;mailcimem@gmail.com

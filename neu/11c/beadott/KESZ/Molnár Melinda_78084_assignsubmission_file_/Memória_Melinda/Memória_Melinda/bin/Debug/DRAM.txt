@@ -1,1 +1,0 @@
-DRAM; 32; olvasas/iras; elektromos; igen; lassabb mint a CPU; olcso
