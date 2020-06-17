@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Prog4 tizenegyedik előadás</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/sajat.css"/>
+  </head>
+	<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Tizenegyedik előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">DM</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5"><h1 id="prog4-tizenegyedik-előadás">Prog4 tizenegyedik előadás</h1>
+<blockquote>
+<p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
+</blockquote>
+<h2 id="martin-flower:-patterns-of-enterprise-application-architecture">Martin Flower: Patterns of Enterprise Application Architecture</h2>
+<h3 id="rétegzés">Rétegzés</h3>
+<p>A már megismert rétegzési módszertanok nagyon merev megközelítést adtak: mindig ugyanazokon a rétegeken keresztül mentek a requestek, független attól, hogy a programot éppen a felhasználó használja, API végpont éri el azt, vagy teszteljük.</p>
+<h4 id="onion-/-hexagon-architecture">Onion / hexagon architecture</h4>
+<p>Az alkalmazás magja adja a logikát, erre épülnek külső rétegek, amik különféle portokon keresztül kommunikálnak a külvilággal (data és command adapterek: a különböző port-specifikus reprezentációkat konvertálja a mag számára értelmezhető formára, majd vissza). Minden port saját rétegzéssel rendelkezhet.</p>
+<p>Rétegfüggetlen komponensek, vagyis aspektusok használata is gyakori filozófia. Ezek ún. cross cutting concernek, ilyen például a messenger, naplózás, vagy az autentikáció. Jellemzőjük, hogy nem kötődnek egyértelműen réteghez, több réteg között is átjárást biztosíthatnak, de fontos, hogy nem tehetik tönkre a rétegzésünket.</p>
+<h4 id="domain-driven-design">Domain-Driven Design</h4>
+<p>A klasszikus rétegzés okozta merevséget, korlátokat hivatott feloldani, átlépni. Alapfilozófiája, hogy minden, beleértve a rétegzés is az <strong>üzlettől</strong> kell függjön, a BL körül kell központosulnia.</p>
+<blockquote>
+<p>&quot;Nem az számít a rétegzés szempontjából, hogy hogyan érem el az adatot, hanem, hogy mit csinálok vele.&quot;</p>
+</blockquote>
+<p>A cél, hogy &quot;üzleti logikai&quot; entitásokkal dolgozzunk, ne data entitásokkal --&gt; bounded contextek.<br>Példa: több helyen is használjuk ugyanazt az adatot a programban, ekkor <strong>nem</strong> egy darab osztályként kezeljük mindenhol (hiszen a különböző contextekben máshogyan van szükség erre az adatra), hanem létrehozunk a bounded contexteknek megfelelő osztályokat, és azokkal dolgozunk. Ezek persze egy <strong>mapper</strong> segítségével megfeleltethetőek a data entitásnak, pl. EF is tud ilyen mapolást csinálni.<br>Vigyázat! Túl nagy vagy túl kicsi felelősségi körrel rendelkező contextek is előállhatnak. A kódújrafelhasználhatóság miatt fontos, hogy a modulok is eléggé függetlenek legyenek, hiszen átmozgatáskor fontos, hogy csak egy komponenst vigyünk át.  </p>
+<p>Kiegészül a &quot;hagyma&quot; mégegy réteggel, ez pedig a <strong>Service layer</strong>. Ennek feladata, hogy a domain réteg elemei egymással tudjanak kommunikálni --&gt; microservices. Mindegyik szolgáltatás egy saját &quot;szeletként&quot; fogható fel (saját data, saját domain level, mapper + logika, valamint szolgáltatás), és ezek kommunikálnak egymással --&gt; nem egy monolitikus alkalmazás van, hanem egy <strong>több nyelven íródott</strong>, szegmentált app. A service layer gyakorlatilag egy facade, nem tartalmaz logikát.</p>
+<p>Ebben az átalakult rétegzésben a UI egy ugyanolyan lebutított szolgáltatás, rendelkezik akár saját adattal is (pl.: UI beállításai)</p>
+<p>Service layer, the real DDD way: is in perfect balance, like all things should be in the universe.</p>
+<ul class="list">
+<li>adatok olvasásakor, megjelenítésekor több bounded contextet kell olvasni, hogy megkapjunk minden adatot, ez lassabb. Viszont ekkor nem kell foglalkozni validációval, naplózással, stb... --&gt; csomó servicet nem használunk</li>
+<li>íráskor csak egy bounded contextet írunk, azonban sok szolgáltatást használunk ehhez</li>
+</ul>
+<h2 id="cqrs-(command-query-responsibility-segregation)">CQRS (Command-Query Responsibility Segregation)</h2>
+<p>Ez összefoglalja az imént említetteket, tehát azt, hogy miképpen választható szét az írás olvasás folyamata.</p>
+<h3 id="query-esetén">Query esetén</h3>
+<p>A cél, hogy <strong>gyorsan</strong>, egyszerűen érjük el és jelenítsük meg az adatokat.</p>
+<ul class="list">
+<li>nincs szükség az összes rétegre az olvasáshoz: elég, ha a db-t kezelő réteg odaadja a UI-nak az adatokat</li>
+<li>nem számít, hogy a user milyen <strong>régi adatokat</strong> lát (az esetek nagy részében). Tehát csinálhatunk egy saját, független tárolót (ami mellesleg jól reprezentálja a megjelenítést, gyakorlatilag egy-az-egyben megjeleníthető), majd ezt bizonyos időközönként frissítem a real DB alapján. Gyakorlatilag ez egy új, <em>persistent viewmodel</em> adatbázis, ami ráadásul lehet noSQL, kifelé egy SELECT utasítás elég, nem kellenek bonyolult DB műveletek.</li>
+<li>real life usecase arra, hogy miért kell szétválasztani a query-t és a commandot: sokan olvassák az oldalt, kevesen írják --&gt; hatalmas erőforrás megtakarítás</li>
+<li>probléma, hogy a dinamikus, egyedi keresések (pl.: egy szóra keresünk egyik oszlopban) nagyon lassúak, és erőforrás-igényesek, a relációs adatbázisok ebben nagyon gyengék</li>
+<li>ez megoldható úgy, hogyha azt tekintjük, hogy a keresések kb. 95% még sem &quot;egyedi&quot;, hiszen a felhasználók ismétlik ezeket --&gt; ezek is betölthetőek a viewmodelbe</li>
+</ul>
+<h3 id="command-esetén">Command esetén</h3>
+<p>UI-ról érkező command alapján frissítjük a viewmodel DB-t, és az éles DB-t. Hibalehetőségek:</p>
+<ul class="list">
+<li>ritkán előfordulhat, hogy a command failel --&gt; de csak emiatt kár várakozni a megerősítésre, egyből válaszolunk, hogy igen, sikerült a command, majd végrehajtódik majd aszinkron módon. Persze megintcsak figyelni kell rá, hogy vannak esetek, ahol ez nem használható</li>
+</ul>
+<h4 id="event-driven-architecture">Event-driven architecture</h4>
+<p>A CQRS-hez jól kapcsolódik, hiszen nem gond, ha az utasítások nem egyből hajtódnak végre. Ez a user experiencet is javítja, hiszen pl. foglalási rendszer esetén egyből kap visszajelzést, hogy sikeres a foglalás. Kb 3-4%-ban, ahol ezután hiba történik, ott kézzel meg lehet oldani a dolgokat.</p>
+<ul class="list">
+<li>erőforrás-hatékony</li>
+<li>flexibilis: pl a diákon.: <ul class="list">
+<li>megvan egy olyan program, ami megadja, hogy hány bizonyos feltételnek megfelelő telefonszám van az adatbázisban</li>
+<li>ez klasszikus rétegzés esetén szépen végigmegy a rétegek között</li>
+<li>mi van akkor, ha most szeretném, hogy összesen hány telefonszámból számoltunk? Át kell írni az összes réteget ehhez</li>
+<li>megoldás: eventekkel; a közvetítő most már nem csak arra iratkozik fel, hogy <code>MatchingNumbersCounted</code>, hanem arra is, hogy <code>AllNumbersCounted</code>. Ez utóbbit pedig a sima munkafolyamat megfelelő részén (összes szám lekérése) egy másik eseményhívással számoljuk meg.</li>
+</ul>
+</li>
+<li>event sourcing: a command bekerül egy command sorba (ez tényleg csak egy queue), ezután ezt handlerek, illetve a domain model feldolgozza, majd egy eseményt vált ki, amit egy mediator-jellegű event-broker  szétpakol (DB-be menti, naplózza, viewmodelbe teszi)</li>
+<li>ez nagyon hatékony, a várósorról akárhova kerülhet a command, akár külső feldolgozásra is, így nagyon jól <strong>skálázhatóvá</strong> válik a rendszer</li>
+<li>könnyű a visszakeresés is</li>
+<li>extra információk is kinyerhetőek plusz adatok tárolása nélkül (mivel az eventek idejét látjuk, stb...)</li>
+<li>tesztelés is könnyebb</li>
+</ul>
+<p>Hátrányok:</p>
+<ul class="list">
+<li>olyan jelentések, amiket megszoktunk a RLDBMS esetén (Group by, stb...) sokkal nehezebb itt</li>
+<li>hibák nem egyből jönnek elő, delay van</li>
+<li>nagyobb tárigény</li>
+<li>ezek miatt nem mindenhol, észnélkül használható pattern a CQRS</li>
+</ul>
+<p>Összefoglalás ezen a <a href="https://youtu.be/ryu11M-7zto?list=PLGgtxIMNuefboI3yZCdYAAly4zb3X5p-M&amp;t=4113">videón</a>. </p>
+    </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

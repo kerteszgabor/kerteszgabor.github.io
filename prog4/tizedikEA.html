@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Prog4 tizedik előadás</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/sajat.css"/>
+  </head>
+	<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Első előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">DM</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5"><h1 id="prog4-tizedik-előadás">Prog4 tizedik előadás</h1>
+<blockquote>
+<p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
+</blockquote>
+<h3 id="structural-design-patterns">Structural Design Patterns</h3>
+<pre class="hljs"><code>Emlékeztető: Structural patterns dia színek
+- Zöld - funkció bővítésére használadnó minták (fontosak)
+- Kék - <span class="hljs-selector-tag">a</span> dependency injection használata (<span class="hljs-selector-tag">a</span> könyvben nem szerepel, mert nem létezett <span class="hljs-selector-tag">a</span> szó)
+- Nincs szín - nem kategorizálható</code></pre><h4 id="adapter-pattern">Adapter pattern</h4>
+<p>Object adapter néven ismert, feladata, hogy egy már működő funkcionalitást szeretnénk egy új implementációban is használni, anélkül, hogy az eredeti osztályt módosítanom kéne. Visszafele kompatibilitás megoldása esetén is gyakran előkerül.<br>A szignatúra különbségek problémákat okozhatnak:</p>
+<ul class="list">
+<li>pl.: futásidőben ha paramétert kell átadni az új implementációban, akkor az a paraméter ki van már egyáltalán töltve, mikor átadom? Bool esetén, ha csinálunk egy property-t, az működhet, de ha false, az mit is jelent? Logikailag false, vagy csak nem lett kitöltve? Továbbá, mivel az ős nem tartalmazza a tulajdonságot, így kívülről teljesen elérhetetlen lesz ez, hiszen az ős referenciáján keresztül dolgozunk vele. <ul class="list">
+<li>megoldás lehet, ctor paraméterként bekérni ezt az adatot (IoC container ezt szépen kitölti)</li>
+<li>nullable bool is információt hordoz arról, hogy írtuk-e már az adatot</li>
+<li>illetve setelésnél egy flag átbillentése majd későbbi ellenőrzése is megoldja a problémát</li>
+</ul>
+</li>
+</ul>
+<p>Ezen kívül probléma lehet a visszatérési értékek divergálása is</p>
+<ul class="list">
+<li>pl.: double <---> string konvertálás - nagyon problémás lehet</li>
+<li>void helyett extra adat: redundancia, nem tudunk vele mit kezdeni, felhasználni</li>
+</ul>
+<p>További probléma a metódusok számában lévő különbség</p>
+<ul class="list">
+<li>ha az új implementációnak van extra metódusa, az általában kevésbé gond, megintcsak redundancia, használni nem fogjuk tudni</li>
+<li>fordított esetben nagyobb gond lehet, hiszen nem létező metódusokat hívhatunk kívülről az ősön keresztül --&gt; megoldás, hogy <strong>nem csinálunk semmit</strong></li>
+</ul>
+<p>A létrehozásnál még oké, hogy tudunk a megvalósításról, de a felhasználásnál már mindenképpen <strong>rejtett</strong> kell legyen a működés.<br>Data-adapterek .Net-ben</p>
+<ul class="list">
+<li>bármilyen DB formátumából <code>DataRow</code> és <code>DataTable</code> kell, hogy készüljön</li>
+<li>LINQ esetén az utasítás (kifejezésfa) különböző adatszerkezeteken értelmezhető</li>
+<li>EF: több fajta SQL modelt tud leképezni C# osztályokra, valamint SQL lekérdezést generálni</li>
+</ul>
+<h4 id="bridge-pattern">Bridge pattern</h4>
+<blockquote>
+<p>&quot;Mi van akkor, ha egy rossz hiearchiát hoztam létre, és utólag vettem észre?&quot;</p>
+</blockquote>
+<p>Elsőre felépítünk egy logikus(nak tűnő) felépítést, de kiderül, hogy nem teljesen single responsibility, tehát kettő vagy több tényezőtől is függ a hiearchia --&gt; a sokadik osztály hozzáadása több osztályt igényel</p>
+<ul class="list">
+<li>megoldás: azonosítjuk a két tényezőt, &quot;szétvágjuk&quot; a <em>god</em> hiearchiát a függőségek mentén --&gt; pl.: pull-up refactoring</li>
+<li>bridge elnevezés: összeköti a két ősosztályt valamilyen hivatkozási formával (dependency injection)</li>
+<li>ha szétbontjuk az erősen kötött hiearchiát, akkor lehet olyan felépítést is kreálni, ami nem szerencsés (ergo az eredeti felépítés nem véletlen lehetett kötött)</li>
+</ul>
+<h4 id="composite-pattern">Composite pattern</h4>
+<p>Egy teljesen egyszerű, hétköznapi faszerkezetet ír le, ahol ugyanaz a művelet lehetséges a teljes fára, illetve bármelyik részfára, vagy akár egy levélelemre. Ritkán használt, legalábbis ilyen explicit módon.</p>
+<h4 id="flyweight-pattern">Flyweight pattern</h4>
+<p>Nagyon hasznos trükkökből áll össze a pattern, de egyben szinte soha nem használatos. Célja, hogy a memóriaigényt csökkentse a program esetén, olyan módon, hogy a többi programozó, illetve a felhasználó se vegye észre a trükköket. </p>
+<ul class="list">
+<li>memóriaoptimalizációs technika </li>
+<li>pl.: threadpool esetén úgy tűnik, mintha végtelen sok szálunk lenne létrehozható, közben pedig recycling történik</li>
+<li>pl.: karakterek kiírása egy hosszú szöveg esetén: az ismétlődő karaktereket nem biztos, hogy el kell tárolni mindenhol<ul class="list">
+<li><strong>rejtett</strong> Singleton megoldás, <em>Type</em> típusok használat erre ideális, mivel a <code>instance.Gettype()</code> eleve Singleton módon, egy közös példányt ad vissza</li>
+<li><strong>rejtett</strong> shared pointer, string típus ideális erre</li>
+<li>a fentiek miatt nem szerencsés lockolni ezeken az objektumokon C#-ban</li>
+<li>pozíció kiszámolása <em>on-the-fly</em> módon: megintcsak CPU igényes, de nem kell eltárolni pozíciókat</li>
+<li>Object pooling: példánykészletek állnak rendelkezésre, új elem létrehozása - ha nincs rendelkezésre álló példány - úgy történik, hogy valamilyen módon felszabadítunk a használatban lévő elemek közül egyet. Manapság annyira népszerű, hogy szinte kiemelődött önálló patterné.</li>
+<li>.Net-ben a string osztály rendelkezik beépített poolal, és automatika folyamatosan figyeli a háttérben, hogy mikor egyeznek stringek, mikor lehet őket beemelni a stringcache-be, majd pointerrel rámutatni több helyről erre a cachelt elemre. Alapvetően pl.: műveletek eredményeit nem teszi bele</li>
+</ul>
+</li>
+<li>pl.: lazy loading (Androidon) is ehhez kapcsolódik: 10 elem látható egy listában a képernyőn, scrollozás esetén, ami kicsúszik a képernyőből azt nem felszabadítjuk, hanem újra felhasználjuk</li>
+</ul>
+<h4 id="facade-pattern">Facade pattern</h4>
+<p>Nem definiál logikát, az a feladata, hogy a belső rendszert, a felépítést, a függéseket elrejti a kint lévő használó klienseknek. Nagy veszélye, hogy könnyen <em>god-object</em>ek alakulhatnak ki</p>
+<ul class="list">
+<li>a forráskódból sokszor nem látszik milyen patternről van szó, hiszen kívülről kompozíciónak tűnik minden ilyen pattern</li>
+<li>a facade pl.: sorrendet meghatározhat, de ezen túl <strong>semmilyen</strong> üzleti logikát sem</li>
+<li>CoR filozófiájához hasonló, hiszen a belső hívásfolyamat kívülről le van rejtve</li>
+<li>architektúrális tervezési minta: van valós életben is látható példa rá. pl.: package holiday</li>
+</ul>
+<h4 id="proxy-pattern">Proxy pattern</h4>
+<p>Gyakorlatilag egy másolat egy eredeti osztályról, ugyanazokkal a metódusokkal. A különbséget az jelenti, hogy elő-és utófeldolgozásra van lehetőség a metódusokkal. A truvájt az jelenti, hogy kívülről le van rejtve ez a proxy, és simán lehet, hogy úgy helyettesíti az osztályt, hogy valójában ezt nem is érzékeljük. Ennek köszönhető, hogy bonyolult frameworkok baromi egyszerűen használhatóak.</p>
+<ul class="list">
+<li>pl.: EF esetén a tulajdonság módosítása <strong>nem</strong> csupán egy <code>set;</code> szetter állítás, hiszen a savechanges hívás honnan tudná, hogy milyen <code>UPDATE</code> SQL utasítást kell kiadni?</li>
+</ul>
+<p>Fajtái:</p>
+<ul class="list">
+<li><strong>remote proxy</strong>: úgy tűnik, mintha local namespace eleme lenne, amit használunk, de valójában a tényleges osztály valahol egész máshol van (másik app, felhő, stb...)</li>
+<li><strong>virtual proxy</strong>: entityk esetén nem biztos, hogy minden tulajdonság le van töltve, lehetséges, hogy a <code>get;</code> híváskor fut csak le az SQL lekérdezés, és kerül feltöltésre a tulajdonság</li>
+<li><strong>protection proxy</strong>: autentikációt végez</li>
+<li><strong>smart reference</strong>: proxyra egy alternatív elnevezés, egy olyan referencia, ami extra műveletekre is képes</li>
+</ul>
+<p>A proxyban lehetnek extra metódusok, de <strong>nem lehetnek</strong> publikusak!</p>
+<h4 id="decorator-pattern">Decorator pattern</h4>
+<p>Ez is egy fontos minta, jellemzően nagyobb programok esetén használatos. Lényege, hogy ezúttal bővíteni tudunk funkcionalitáson publikus módon, és ezek a funkciók <strong>egymásba helyezhetőek</strong>.<br>Univerzális bővítés, mert lehet facade, proxy, és hozzáadhat plusz funkciót is.
+pl.: textbox esetén (dián példa, textview, scrollbar, keret bővítők) ezek így néznek ki</p>
+<ul class="list">
+<li>facade, ha írok a textboxba: mást látok, mivel ki van dekorálva a textbox, de ez semmit nem befolyásol</li>
+<li>proxy, mert ha kattintok előfeldolgoz, hogy pl. hova nyomtam a textboxon</li>
+<li>plusz funkciót ad hozzá, mert scrollozható az ablak, illetve lehet extra tulajdonsága, pl. border color</li>
+<li>fontos, hogy a kompozíció miatt bármi bővíthető bármivel, és ez futásidőben befolyásolható, módosítható is</li>
+<li>hasonló az öröklődéshez a működés, csak előnye, hogy <strong>futásidőben</strong> cserélhetőek a viszonyok</li>
+<li>ennek hátránya, hogy nem lehet debuggolni gyakorlatilag, mivel átláthatatlan, hogy a hívásoknak mi az útvonala</li>
+<li>másik hátránya, hogy a láthatósági szinteken növelni kell, mivel OOP szabály, hogy a protected láthatósági szintnél másik, független osztály mezőjét nem érhetem el. Ez ugye akkor fordulna elő, ha a leszármazottban a referencia esetleg nem a saját, decorator típus, és nem is az ős típusa, hanem esetleg egy harmadik, független leszármazotté</li>
+</ul>
+<center>
+ <h3> A korábban látott patternek összehasonlítása </h3>
+
+<table style="margin: 0 auto;  width: 78%" >
+<thead>
+<tr>
+<th style="text-align:center">Pattern</th>
+<th style="text-align:center">Új művelet?</th>
+<th style="text-align:center">Egymásra helyezhető</th>
+<th style="text-align:center">Known?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>Facade</strong></td>
+<td style="text-align:center">nem (csak sorrend)</td>
+<td style="text-align:center">nem</td>
+<td style="text-align:center">igen</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Proxy</strong></td>
+<td style="text-align:center">igen (pre/post method)</td>
+<td style="text-align:center">ritkán</td>
+<td style="text-align:center">ritkán</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>Decorator</strong></td>
+<td style="text-align:center">igen</td>
+<td style="text-align:center">igen</td>
+<td style="text-align:center">igen, de nem muszáj</td>
+</tr>
+</tbody>
+</table>
+</center>
+    </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

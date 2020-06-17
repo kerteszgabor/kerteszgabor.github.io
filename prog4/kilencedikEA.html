@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Prog4 kilencedik előadás</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/sajat.css"/>
+  </head>
+	<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Kilencedik előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">DM</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5"><h1 id="prog4-kilencedik-előadás">Prog4 kilencedik előadás</h1>
+<blockquote>
+<p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
+</blockquote>
+<h3 id="behavioral-design-patterns-folytatása">Behavioral Design Patterns folytatása</h3>
+<pre class="hljs"><code> <span class="hljs-attribute">Emlékeztető</span>: Behavioral patterns
+
+<span class="haml">-<span class="ruby"> Zöld - hívó és hívott szétválasztása
+</span>-<span class="ruby"> Piros - gyűjteményekkel dolgozó patternek
+</span>-<span class="ruby"> Kék - a virtuális metódusok értelmes használata
+</span>-<span class="ruby"> Nincs szín - nem kategorizálható</span></span></code></pre><h4 id="interpreter-pattern">Interpreter pattern</h4>
+<p>Kifejezéseket próbálunk értelmezni (pl. reguláris kifejezések), a <strong>single responsibility</strong> elvet követve a pattern azt mondja, hogy minden osztályunk tartalmazzon egy <em>Interpret</em> metódust, és mindegyik egy fajta kifejezést tudjon értelmezni.</p>
+<ul class="list">
+<li>kifejezésfák jönnek létre</li>
+<li>van egy context, és minden osztály azért felelős, hogy azt a saját felelősségi köre alapján módosítsa</li>
+<li>van egy absztrakt ősosztály, ami meghatároz egy interpret metódust, ezt írja fölül minden alosztály</li>
+<li>több expression <em>chain of responsibility</em> módon módosítja az outputot, ezt persze kívülről le van rejtve</li>
+<li>terminal expression: értelmezhető önmagában</li>
+<li>non-terminal expression: nem értelmezhető önmagában, csak más kifejezésekkel együtt (pl.: X a római számoknál önmagában non-terminal, mert lehet IX valójában...)</li>
+<li>nagyon általános megoldás, így alig-alig használható</li>
+<li>állapotgéppel jellemzően egyszerűbb a feldolgozása ezeknek a kifejezéseknek</li>
+<li>marginális pattern</li>
+<li>viszont nagy előnye, hogy szinte <strong>bármire</strong> használható, bármiből bármit tudunk konvertálni</li>
+<li>flexibilis, bővíthető, ha minden kifejezés &quot;egy élre játszik&quot;</li>
+<li>tradeoff: nagy overhead, sokszor overkill, és nem hatékony rengeteg osztály egy egyszerű ciklus helyett</li>
+</ul>
+<p>Példa: Roman --&gt; arab számok. Minden egyes expression (jelen esetben helyiérték, tehát 1-es, 10-es, 100-as stb...) tárolja a hozzá tartozó számjegyeket, valamint a helyiérték koefficiensét (pl.: 10-esnél X: One, XC: Nine, és a szorzó 10). Minden helyiérték <code>interpret</code>-e feldolgozza a saját karaktereit, majd levágja azokat, és ekkor már hozzáadta a kiszorzott értéket a végeredményhez.</p>
+<h4 id="memento-pattern">Memento pattern</h4>
+<p>Szintén erősen illeszkedik az <strong>SO</strong>-ba. Feladata az előző állapot mentése és visszaállítása.</p>
+<ul class="list">
+<li><code>Originator</code> osztályt használjuk két functionnel: <code>Undo()</code> és <code>Redo()</code></li>
+<li>a megvalósítás teljesen mindegy kívülről, a <code>Memento</code> és a <code>Caretaker</code> lehetnek rejtett osztályok</li>
+<li><code>Memento</code> feladata az egyszeri mentés és visszaállítás<ul class="list">
+<li>láthatósági okokból előfordulhat, hogy nem csak a menteni kívánt objektumot adjuk át paraméterként, mivel a privát adattagokat is el kell érni</li>
+<li>a másolat mindig <strong>deep copy</strong> --&gt; <em>prototype pattern</em> tökéletesen kapcsolódik ide</li>
+<li>ugly megoldás: szerializáció és deszerializáció</li>
+</ul>
+</li>
+<li><code>Caretaker</code> feladata több <code>Memento</code> példány tárolása<ul class="list">
+<li>itt célszerű a belső szerkezetet (listát) lerejteni, és kivülről verziókezelés-szerűen elérhetővé tenni</li>
+<li>eleve, nem jellemző felhasználás, hogy <code>ctrl-z</code> esetén tudjuk, hogy mire ugrunk vissza, csak visszalépünk egyet</li>
+<li>undo után save: második visszavonás gyakorlatilag egy <em>redo</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="state-pattern">State pattern</h4>
+<p>Abban különbözik a memento-tól, hogy amikor a mentésről beszélünk, akkor nem egy teljes objektumról van szó, hanem egyetlen <strong>egy adattagról</strong>, ami az objektumhoz, vagy adott esetben az objektumhoz kapcsolódik.</p>
+<ul class="list">
+<li>state UML-diagram kapcsolódik hozzá</li>
+<li>állapotváltoztató kódrészletek egyszerűsítésére szolgál, megakadályozza, hogy spaghetti-kódot írjunk</li>
+<li>ez a rendszer szintén <strong>SO</strong>, mivel nincs godclass, hanem <strong>minden státuszhoz</strong> tartozik egy osztály</li>
+<li>ezek az állapotosztályok az <strong>állapotváltoztatást</strong> is elvégzik</li>
+<li>tehát ezek a váltások fix helyre kerülnek a kódban, nem pedig össze-vissza találhatóak</li>
+<li>factory minta ide kapcsolódik: állapotok létrehozása kiszervezhető egy gyárba</li>
+<li>prototype minta szintén: létrehozzuk a (véges számú), összes állapotot, majd ezeket &quot;másoljuk&quot; át minden alkalommal</li>
+</ul>
+<p>Változatok:  </p>
+<ul class="list">
+<li>az üzleti logika metódusokat &quot;leképezzük&quot; a state osztályba (bár nem végez logikát, csak <strong>tud róla</strong>, hogy milyen logika van), és - kevésbé <em>SOLID</em> módon - kezeljük az állapotváltozást<ul class="list">
+<li>State Transition Table<ul class="list">
+<li>könnyen átlátható (1 cella = 1 metódus)</li>
+<li>de bővítés, sok state, sok művelet esetén rengeteg felesleges metódus</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>semmi köze a logikának a változtatáshoz, csak módosítja a statet a metódus, ez talán kevésbé átlátható<ul class="list">
+<li>UML diagramos változat<ul class="list">
+<li>nem tud a state a logikáról</li>
+<li>szomszédos állapotba lép csak az állapot mindig</li>
+<li><code>EnsureState()</code> metódus végzi ezt</li>
+<li>azonban ez bonyolult lehet --&gt; CoR-val megoldható, de akkor meg az osztályok száma nőne</li>
+<li>feltételek óvatos megválasztása szükséges, ha nem diszjunktak, akkor könnyen &quot;végtelen ciklusok&quot; idézhetőek elő </li>
+<li>bár ez SOLID-abb, de nincs olyan, hogy a kecske is eszik, meg a káposzta is megmarad: itt az üzleti logikai műveletek végén hívódik meg a változtatás, tehát ismerni kell, hogy mikor kell állapotot változtatni</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="strategy,-template-method">Strategy, Template method</h4>
+<p>S<strong>OL</strong>I<strong>D</strong> elvekhez erősen kapcsolódik. Mindennapi programokban, intenzíven használatosak. Jellemzően ősosztállyal történő dependency injectionre használható.</p>
+<ul class="list">
+<li>Strategy: a műveletsort teljesen a leszármazottak definiálják<ul class="list">
+<li>ez a library-hez kapcsolható: vannak ősosztályok, és ezeket használjuk fel</li>
+<li>pl.: ASP.NET core Identity</li>
+<li>elnevezéshez kapcsolódik: <em>&quot;stratégia&quot;</em> van megadva valamilyen műveletre, ami művelet független működik a konkrét implementációtól (pl.: DB esetén: SQL-NoSQL-mockolt repository - teljesen mindegy, az üzleti logika mindig működik)</li>
+</ul>
+</li>
+<li>Template: ősben method, valamint virtuális metódusok, amik az algoritmust meghatározzák, és a leszármazottak ezeket írják felül<ul class="list">
+<li>ha elég nagyban nézzük, gyakorlatilag ez a framework: kívülről működtet egy felhasználó program leszármazott kódokat </li>
+<li>pl.: a használt MVC fw lekezeli a request-responsokat, mi csak  legeneráljuk a válaszokat, és formulázzuk azokat, de végig csak szabályokat követünk, és a framework hívja meg a kódunkat valahol</li>
+</ul>
+</li>
+</ul>
+    </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
