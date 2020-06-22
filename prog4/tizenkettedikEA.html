@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Prog4 tizenegyedik előadás</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="assets/css/sajat.css"/>
+  </head>
+	<body id="body" class="light-mode">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Első előadás</a>
+                
+                 <div id="darkmodeSwitcher" class="custom-control custom-switch d-flex justify-content-start mr-5">
+                   <input type="checkbox" class="custom-control-input" onchange="ToogleDarkMode()" id="customSwitches">
+                   <label id="darkmodeSwitcher" class="custom-control-label headerText" for="customSwitches">DM</label>
+                 </div>     
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+                 <div class="navbar-collapse collapse" id="collapsingNavbar">
+                     <ul class="navbar-nav">
+                         <li class="nav-item active">
+                                <a target="_self" class="nav-link" href="index.html">Prog4 előadások</a>
+                            </li>
+                         <li class="nav-item">
+                             <a target="_self" class="nav-link" href="../main_old/calendar/calendar.html">Határidők</a>
+                         </li>
+                     <li class="nav-item">
+                             <button id="btn" type="button" onclick="ToogleDarkMode()" class=" pull-left navbar-toggle btn-dark btn" style="margin-left: -12px;">Dark Mode</button>
+                         </li>
+                     </ul>
+                 </div>
+             </nav>
+    <article id="content" class="markdown-body mt-5"><h1 id="prog4-tizenegyedik-előadás">Prog4 tizenegyedik előadás</h1>
+<blockquote>
+<p>Disclaimer: az anyag kiegészítésül szolgál az előadás hivatalos anyagához. Ami nem szerepelt a dián, de elhangzott, és esetleg a vizsgán is hasznos lehet, az itt olvasható.</p>
+</blockquote>
+<h2 id="microservices">Microservices</h2>
+<h3 id="monolitikus-vs-mikroszervíz">Monolitikus vs Mikroszervíz</h3>
+<p>A monolitikus alkalmazások erősen rétegzett, szigorú szabályok szerint írt alkalmazások. Alapja, hogy a rétegek egymástól függetlenítésére törekszünk, a funkciók megjelennek a különböző rétegekben.<br>Ezzel szemben láttuk a DDD-nál, hogy a funkciók mentén szét lehet darabolni az alkalmazást <strong>bounded contextekre</strong>, azonban ezek még mindig egy alkalmazásban vannak. Ha ezeket kiszervezzük <strong>külön alkalmazásokba</strong>, majd loosely-coupled módon összekötjük őket (jellemzően web) 
+Ez a vita mostanában éleződött ki, de a vita ősrégi (lásd.: Tannenbaum-Torvalds vita a linux kernelről), az tény, hogy a kevésbé kötött alkalmazás növeli a flexibilitást, de rontja a teljesítményt. Nem lehet kijelenteni, hogy egyik vagy másik jobb lenne, de kétségtelen, hogy a microservicek manapság egyre népszerűbbek.</p>
+<h4 id="monolitikus-alkalmazások">Monolitikus alkalmazások</h4>
+<p>Egy forráskód, ami modulokra lehet bontva. A fejlesztés persze szétbontható, de a végén az összekapcsolt modulok együtt fognak működni, egy exeben, egy memóriaterületen. Ráadásul a modulok nem választhatóak szét teljesen, fejlesztési időben is van függés, hiszen integrálni kell majd őket (persze DI sokat segít, és külön-külön tesztelhetőek), és ez lassítja a folyamatot.</p>
+<ul class="list">
+<li>ugyanazokat a komponenseket (pl.: JSON olvasás) kell használni a program összes pontján (nem tudunk &quot;modularizálni&quot;)</li>
+<li>még mindig egy adatbázist használunk, persze a mapper megoldja ezt valamennyire, de a függőségeket nem lehet feloldani</li>
+<li>skálázhatóság: ha van egy modul, ami nagyobb erőforrást igényelne, akkor nem tudok neki többet osztani, csak egyben az egész program számára --&gt; bottleneck</li>
+<li>fejlesztési folyamat nő, ahogy nő az alkalmazás (frissítés, új funkciók tesztelése nehézkes, lassul a program, érdemes elolvasni Bob bácsit a témában, bemutatja példákon keresztül, hogy nagyon jó appok hogyan mentek tönkre úgy, hogy &quot;god&quot; appok lettek)</li>
+<li>de előnyt jelent, ha egy helyen kezeljük az adatokat (kommunikáció <em>sokkal</em> könnyebb, hatékonyabb, mint weben átadni adatokat), és könnyebb is megírni így a programot (code-generation, IDE support)</li>
+</ul>
+<h4 id="mikroszervíz-alapú-alkalmazások">Mikroszervíz alapú alkalmazások</h4>
+<p>Önálló, elszigetelt alkalmazások. Jellemző buzzword a SOA (= szolgáltatásorientált-architektúra), ez írja le az egész rendszert. Kis modulok, melyek előre definiált protokollokon keresztül kommunikálnak egymással.<br>Önmagukban életképes, teljesen szuverén alkalmazások (saját fejlesztési metodológiával, hostolással, verziókövetéssel)</p>
+<h5 id="előnyök">Előnyök</h5>
+<ul class="list">
+<li>skálázhatóság</li>
+<li>még jobban elválnak a servicek fejlesztési szempontból: egyáltalán nem függnek egymástól, így &quot;jobban párhuzamosítható&quot; a fejlesztés --&gt; akár az egész fejlesztési időtartam csökkenhet</li>
+<li>bugok is jobban kezelhetőek, detektálhatóak (és eleve, mellékhatások csökkennek)</li>
+<li>vannak nagyméretű <em>micro</em>servicek is, tehát inkább filozófia ez</li>
+<li>felbontási határok: megintcsak nem technológiai határok, hanem <strong>logikai</strong>, üzleti szemlélet (lásd: bounded contexts)</li>
+<li>autonóm tesztelési szempontból is (service stub), nagyon hasonló a monolitikus appokhoz</li>
+<li>migráció sosem volt ilyen könnyű, egyszerű másolások</li>
+<li>párhuzamosítást jobban támogatja (mono alkalmazások esetén rengeteg bottleneck: processing, deadlocks, konkurrencia) --&gt; itt a preemptív OS megold szinte mindent</li>
+<li>load balancing is egyszerűbb</li>
+<li>VM (teljes, hardveres izoláció, de igényes) és containerek (nem teljesértékű OS fut alatta, egy engine allokál erőforrásokat, tehát nem fizikai szeparálás, de kisebb overhead, gyorsabb, egyszerűbb)</li>
+</ul>
+<h5 id="konfigurálhatóság">Konfigurálhatóság</h5>
+<ul class="list">
+<li>nem szeretnénk, ha konfigokat, főleg nem forráskódot írni, amikor mozgatni akarjuk a servicet</li>
+<li>deploymentet, tesztelést, monitorozást is egy rendes, átlátható felületen szeretném átlátni (jellemző, hogy weben kattingatunk)</li>
+<li>szinte minden nagy cégnek van felhő szolgáltatása (CLI, REST)</li>
+</ul>
+<h5 id="áttérés">Áttérés</h5>
+<p>Jellemző, hogy a termékek nem microserviceként kezdik meg az életüket, ekkor valahogy át kell térnünk. A megoldás a folyamatos áttérésben van, kiemelünk egy modult microservicebe (ezt jellemzően egy csapat csinálja), és ekkor a meglévő appba facade / proxy / decorator pattern segítségével be tudom integrálni azt. Kisebb kockázatot vállalunk így.</p>
+<p>Mit emeljünk ki első lépésben?</p>
+<ul class="list">
+<li>aminek a legkisebb a függősége (mindkét irányba)</li>
+<li>ami gyakran változik, de nem igazán függő (pl.: nyomtatás)</li>
+<li>adatbázis problémák, hiszen izoláltak a servicek --&gt; nem használnak közös adatbázist. Viszont, ha el akarunk érni egy entity-t, annak létezőnek kell lennie az éles adatbázisban, kell valamilyen megfeleltetés<ul class="list">
+<li>idegenkulcsok függése (remote foreign keys megoldás lehet, de nehéz implementálni))</li>
+<li>adatbázis-klaszter, tényleges elosztott DB rendszer --&gt; CAP<ul class="list">
+<li>konzisztens (mindig pontos, friss adat), azonnal elérhető, partíció toleráns (tovább működik sok kérésnél is)</li>
+</ul>
+</li>
+<li>egy közös adatbázis megoldás: szuverenitás sérül, de lehet jó megoldás (ráadásul monolitikus DB problémái előjönnek: skálázhatóság, load balance)</li>
+</ul>
+</li>
+</ul>
+<h5 id="technológiai-függetlenség">Technológiai függetlenség</h5>
+<p>Megvalósítás során tetszőleges programnyelv használható a különböző servicekhez, de ezeknek kell tudni kommunikálni.</p>
+<p>WCF ABC</p>
+<ul class="list">
+<li>Address: szerver - kliens kapcsolat (kétirányú)</li>
+<li>Binding: meg kell egyezni, hogy milyen formában van kommunikáció (jellemző REST API, JSON. REST igazából csak egy filozófia, nem egy rendes protokoll)</li>
+<li>Contract: mindenfajta adattovábbítási adathalmazt definiál (milyen adat küldődik)</li>
+</ul>
+<h5 id="a-mikroszervíz-belső-felépítése">A mikroszervíz belső felépítése</h5>
+<ul class="list">
+<li>a REST API előnye, hogy kívülről egyértelmű, csak egy REST API hívást látok</li>
+<li>belül már bonyolultabb a dolog, mert más-más REST API-val kezelem a desktopot, a mobilt</li>
+<li><p>elképzelhető, hogy ugyanazt a REST API-t használjuk belül, de tényleg kaotikus lesz egy idő után</p>
+<p>Megoldás: mediator minta</p>
+<ul class="list">
+<li>nem kell ismerni a ms végpontokat</li>
+<li>üzenetbusz / csillag topológia</li>
+<li>address, binding adott, contractot kell csak megállapítani</li>
+<li>N-N kapcsolat is lehetséges, mert elég csak a mediatort ismerni</li>
+<li>nagy mennyiségű, kis méretű adatok továbbítása --&gt; IoT</li>
+</ul>
+<p>El kell dönteni, hogy melyik típusú message bust használjuk:</p>
+<ul class="list">
+<li>megbízhatóság (hányszor kell elküldeni az adatot)</li>
+<li>sebesség (üzenet / másodperc, de ezt nehéz meghatározni a sok tényező miatt)</li>
+<li>üzenet mérete (nagyon kicsi és nagyon nagy üzenetek jellemzők, ezek élesen elválnak egymástól)</li>
+</ul>
+</li>
+</ul>
+<p>Megvalósítás:</p>
+<ul class="list">
+<li>&quot;Ad-hoc&quot; módszer: mindenki kommunikál mindenkivel, közös adatbázis is lehet</li>
+<li>Facade / proxy: első esetben nem változtat a kérésen és a válaszon, a proxy változtathat</li>
+<li>Cor</li>
+<li>Branch (fastruktúra)</li>
+<li>Mediator (message bus / broker(több feladó, több címzett))</li>
+</ul>
+<p>RabbitMQ</p>
+<ul class="list">
+<li>AMQP protokoll: teljeskörű, nyílt, mindenre kiterjed, mindent definiál. Rengeteg feature, küldési módszerek, útválasztás stb szabályozható --&gt; hatalmas overhead. Felhasználható távoli küldésre, nagyobb fájlokhoz.</li>
+<li>MQTT: kevesebb feature, kisebb overhead, kisebb üzenetek, mobil, IoT, publish-subscribe elv</li>
+<li>RabbitMQ: hybrid (mindent magában foglal, több protokoll), broker is, viszont limitált az üzenetszám, mivel CPU-igényes</li>
+<li>20-30k üzenet / sec felett mindenképpen MQTT bróker kell <ul class="list">
+<li>HiveMQ - jól programozható, integrálható</li>
+<li>Redis - DB + cache, és jó funkciók</li>
+<li>Apache Kafka - hatalmas teljesítmény, de nem MQTT alapú</li>
+</ul>
+</li>
+</ul>
+<p>Felhasználás</p>
+<ul class="list">
+<li>lanon belül MQTT tökéletes</li>
+<li>weben REST, AMQP dominál</li>
+</ul>
+<h4 id="összefoglalás">Összefoglalás</h4>
+<h5 id="microservice-hátrányok">Microservice hátrányok</h5>
+<ul class="list">
+<li>erőforrásigény, infrastruktúra</li>
+<li>szaktudás nagyon broad kell legyen, rengeteg stack egyben</li>
+<li>kódot nagyon nehéz újrahasznosítani</li>
+<li>elosztott adatbázis gyengébb, mint egy RDBMS</li>
+<li>hiba stacktrace nincs, nem tudjuk követni rendesen</li>
+<li>kommunikációs overhead nagyon jelentős</li>
+<li>virtualizációs overhead is jelentősebb, mint monolitikus esetben</li>
+</ul>
+    </article>
+    <script src="script/script.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
